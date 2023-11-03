@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  font-family: 'Lora', 'Times New Roman', serif;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size: 1.125rem;
   color: {{ site.text-col | default: "#404040" }};
   position: relative;
@@ -490,7 +490,7 @@ footer .footer-custom-content {
   font-size: 1.125rem;
   font-style: italic;
   margin: 0 0 0.625rem;
-  font-family: 'Lora', 'Times New Roman', serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 .post-heading .post-meta {
   display: inline-block;
@@ -611,6 +611,12 @@ footer .footer-custom-content {
 
 .tag-btn {
   margin: 0.3125rem;
+  background-color: #404040;
+  border-color: #404040;
+}
+
+.tag-btn:hover {
+  background-color: #0085A1;
 }
 
 #full-tags-list {
@@ -622,7 +628,12 @@ footer .footer-custom-content {
 }
 
 #full-tags-list .tag-entry a {
+  color: #404040;
   font-size: 1.25rem;
+}
+
+#full-tags-list .tag-entry a:hover {
+  color:#0085A1;
 }
 
 #full-tags-list .tag-entry .entry-date {
