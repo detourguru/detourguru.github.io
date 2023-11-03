@@ -11,7 +11,7 @@ author: Detourguru
 ---
 
 안녕하세요 디투입니다.
-저는 요즘 [Wordle 워들](https://www.powerlanguage.co.uk/wordle/)이라는 게임에 푹 빠져있습니다!
+저는 요즘 [Wordle 워들](https://www.nytimes.com/games/wordle/index.html)이라는 게임에 푹 빠져있습니다!
 ![](/assets/img/wordle.png)
 
 숫자야구와도 언뜻 비슷한 이 게임은 크로스워드 게임으로도 꽤 유명한 신문사 뉴욕타임즈에서 인수될 정도로 선풍적인 인기를 끈 게임입니다.
