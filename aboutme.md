@@ -1,5 +1,5 @@
 ---
-layout: base
+layout: aboutme
 title: About me!
 subtitle: A junior developer's records
 ---
