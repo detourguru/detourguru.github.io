@@ -1,6 +1,6 @@
 ---
 layout: home
-title: DetourGuru's Blog
+title: About me!
 subtitle: A junior developer's records
 ---
 
