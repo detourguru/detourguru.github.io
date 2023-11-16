@@ -10,9 +10,9 @@ author: Detourguru
 ---
 
 # 목차
-[1. Transaction](#Transaction)
+[1. Transaction](#transaction)
 
-[2. ACID](#ACID)
+[2. ACID](#acid)
 
 # Transaction
 트랜잭션이란 작업의 한 단위로, 원자 처럼 쪼갤 수 없는 최소 단위를 의미한다. 
