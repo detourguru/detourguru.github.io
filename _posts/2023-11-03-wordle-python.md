@@ -6,11 +6,12 @@ cover-img: /assets/img/wordle.png
 thumbnail-img: /assets/img/wordle.png
 share-img: /assets/img/wordle.png
 tags: [python]
+comments: true
 author: Detourguru
 ---
 
 안녕하세요 디투입니다.
-저는 요즘 [Wordle 워들](https://www.powerlanguage.co.uk/wordle/)이라는 게임에 푹 빠져있습니다!
+저는 요즘 [Wordle 워들](https://www.nytimes.com/games/wordle/index.html)이라는 게임에 푹 빠져있습니다!
 ![](/assets/img/wordle.png)
 
 숫자야구와도 언뜻 비슷한 이 게임은 크로스워드 게임으로도 꽤 유명한 신문사 뉴욕타임즈에서 인수될 정도로 선풍적인 인기를 끈 게임입니다.
@@ -141,9 +142,12 @@ for i, j in enumerate(user_input):
 ```
 wordle(random_word_generator(5))
 ```
-`random_word_generator()` 함수에 5자 짜리 단어를 생성해주기 위해 5를 넣어주고 실행하면, 인풋창이 뜨게됩니다.
+`random_word_generator()` 함수에 5자 짜리 단어를 생성해주기 위해 5를 넣어주고 실행하면 인풋창이 뜨게됩니다.
 거기에 단어를 입력하고 6번 내에 단어를 맞춰보세요!!!
+
 ![](/assets/img/wordle-play.png)
+
+
 저는 실제 워들처럼 공유용 status 등등 사소한 부분을 약간 추가해보았습니다.
 
 전체 코드는 [제 깃헙](https://github.com/detourguru/python-scripts/tree/main/Wordle)에서 확인하실 수 있습니다.
