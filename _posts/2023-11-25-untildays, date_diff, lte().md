@@ -2,8 +2,8 @@
 layout: post
 title: '주어진 날짜만큼 순회하는 가장 좋은 방법을 찾아서'
 subtitle: date_diff, daysUntil 그리고 lte
-cover-img: /assets/img/
-thumbnail-img: /assets/img/
+cover-img: /assets/img/calendar.png
+thumbnail-img: /assets/img/calendar.png
 share-img: /assets/img/
 tags: [PHP, Datetime, Carbon, Laravel]
 author: Detourguru
@@ -46,6 +46,7 @@ DateInterval 객체를 받아 days를 구해 그 차이만큼 for문을 돌며 r
     > [[startDate] => 2023-11-24, [endDate] => 2023-11-24]
     > [[startDate] => 2023-11-25, [endDate] => 2023-11-25]
 
+
 <details>
 <summary><b>clone을 하는 이유</b></summary>
 <div markdown="1">
@@ -59,6 +60,7 @@ PHP는 객체를 다른 변수에 할당할 때 <u>객체를 복사하는 것이
 따라서 우리가 의도한대로 `$startDate`를 유지하고 `$targetDate`에만 1일씩 더해주며 순회를 하길 바란다면, `clone`을 이용해 객체를 복사해주어야합니다.
 </div>
 </details>
+
 
 ## 결론
 보다시피 첫번째 코드에서 2023-11-25 00:00:00 ~ 2023-11-25 12:30:00까지의 시간은 순회에 포함되지 않았습니다. 이를 위해서 아래와 같이 수정해보았습니다.
@@ -88,6 +90,7 @@ PHP는 객체를 다른 변수에 할당할 때 <u>객체를 복사하는 것이
 ### 장점
 - PHP 내장함수라 다른 클래스를 가져올 필요없이 없이 바로 사용이 가능하다.
 - 직관적인 함수명으로 어떤 역할을 하는지 바로 알 수 있다.
+
 ### 단점
 - 순회를 할 때마다 `$targetDate`에 1일씩 더해주는 코드가 추가되어야한다.
 - 순회 전 `$startDate`를 변수에 저장하고 1일씩 더해주기 위해 clone 해주어야한다.
@@ -125,6 +128,7 @@ daysUntil는 기준일자를 clone하거나 addDay()를 해줄 필요 없이 일
 마찬가지로 2023-11-25 00:00:00 ~ 2023-11-25 12:30:00 만큼 순회를 더 돌려면 추가 작업이 필요한 상황이 되었습니다.
 ### 장점
 - 반환된 날짜를 받아서 바로 params에 넣어주면 되므로 코드가 간결해졌다.
+
 ### 단점
 - 시분초가 포함된 일자를 순회에 포함하지 않기 때문에 추가적인 작업이 필요해 결론적으론 date_diff와 다르지 않다.
 
