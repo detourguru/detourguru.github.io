@@ -992,6 +992,10 @@ pre {
   margin-top: 0;
 }
 
+.blog-post  {
+  text-decoration: true;
+}
+
 .blog-post img {
   max-width: 100%;
 }
