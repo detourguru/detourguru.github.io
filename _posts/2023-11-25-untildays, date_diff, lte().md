@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '주어진 날짜만큼 순회하는 가장 좋은 방법을 찾아서'
-subtitle: date_diff, daysUntil 그리고 lte
+subtitle: with PHP: date_diff, daysUntil 그리고 lte
 cover-img: /assets/img/calendar.png
 thumbnail-img: /assets/img/calendar.png
 share-img: /assets/img/
