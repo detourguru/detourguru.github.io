@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '주어진 날짜만큼 순회하는 가장 좋은 방법을 찾아서'
-subtitle: with PHP: date_diff, daysUntil 그리고 lte
+subtitle: with PHP; date_diff, daysUntil 그리고 lte
 cover-img: /assets/img/calendar.png
 thumbnail-img: /assets/img/calendar.png
 share-img: /assets/img/
@@ -166,4 +166,4 @@ daysUntil는 기준일자를 clone하거나 addDay()를 해줄 필요 없이 일
 - lte라는 함수명에 익숙하지 않은 경우 함수명으로 무슨 역할을 하는지 한눈에 파악하기 쉽지 않을 수 있다.
 
 ## 정리
-고작 날짜를 순회하기 위해 이렇게 많은 방식을 고민하고 택해보는 과정에서 각 함수의 특징에 대해 보다 더 잘알게 되었다. 다 유사해보여도 각각 차이와 그에 따른 장단점이 있어 다른 기능을 작업할 때 작업에 맞는 적절한 함수를 사용할 수 있는 힘을 기르게 된 계기가 된 것 같아 기쁘다.
+고작 날짜를 순회하기 위해 이렇게 많은 방식을 고민하고 택해볼 수 있다니 이게 바로 코딩의 매력이 아닌가 싶었습니다. 다른 것보다 각 함수의 특징에 대해 보다 더 잘알게 된 기회였습니다. 다 유사해보여도 각각 차이와 그에 따른 장단점이 있어 다른 기능을 작업할 때 작업에 맞는 적절한 함수를 사용할 수 있는 힘을 기르게 된 계기가 된 것 같습니다.
