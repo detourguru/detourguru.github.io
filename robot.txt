@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://detourguru.github.io/sitemap.xml
