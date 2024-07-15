@@ -11,6 +11,10 @@ subtitle: A junior developer's records
   <li>😎 기회를 놓치지 않고 스스로 성장할 줄 아는 INTP 개발자</li>
   <li>🚀 뛰어난 커뮤니케이션 스킬과 협업 능력</li>
   <li>🦎 어느 환경에나 잘 적응할 수 있는 전천후 개발자</li>
+</p>
+
+<h3 align="left">저에게 연락 하시려면:</h3>
+<p align="left"> 
   <li>📧 이메일: detourguru@gmail.com</li>
   <li>👀 블로그: https://detourguru.github.io</li>
 </p>
