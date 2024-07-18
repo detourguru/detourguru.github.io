@@ -273,7 +273,9 @@ user1.introduce(); // 안녕하세요~ 제 이름은 Lucia이고, 나이는 29�
 ### Prototype
 
 - 모든 객체들은 항상 프로토타입 속성을 가진다.
-- 생성자 함수로 생성된 객체들은 prototype에 들어있는 값들을 참조할 수 있다. 그 객체는 생성자 함수의 프로토타입 객체를 자신의 프로토타입으로 설정한다.
+- 함수로 생성된 객체들은 prototype에 들어있는 값들을 참조할 수 있다. 그 객체는 해당 함수의 프로토타입 객체를 자신의 프로토타입으로 설정한다.
+- 프로토타입체인: 인스턴스 내부의 `__proto__` 속성으로 자신을 생성한 생성자 함수의 프로토타입 객체를 참조하는 현상
+- 내 함수 내에서 정의하지 않은 메서드라고 해도 인스턴스 메서드라면 프로토타입 체이닝을 통해 상위 객체의 메서드를 상속받아 사용할 수 있다.
 
 ```
 function User(name, age, gender) {
@@ -290,7 +292,9 @@ User.prototype.introduce = function () {
 
 const user1 = new User("Lucia", 29, "Female");
 user1.introduce(); // 실제 생성자 함수에 선언하지 않아도 프로퍼티에 들어있음
-console.dir(user1.__proto__);
+console.dir(user1.__proto__); // prototype 객체를 가르킨다
+
+console.log(user1.__proto__ === User.prototype); // true
 ```
 
 # This
