@@ -2,8 +2,8 @@
 layout: post
 title: next.js 프로젝트캠프 4일차
 subtitle: JS (4) - 동기와 비동기
-cover-img: /assets/img/nextjs.png
-thumbnail-img: /assets/img/nextjs.png
+cover-img: /assets/img/nextjs-bootcamp.png
+thumbnail-img: /assets/img/nextjs-bootcamp.png
 share-img: /assets/img/
 tags: [javaScript, async, awiat, promise, callback]
 author: Detourguru

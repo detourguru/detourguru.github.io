@@ -2,8 +2,8 @@
 layout: post
 title: next.js 프로젝트캠프 2일차
 subtitle: JS (2) - 자료형과 연산자, 조건문과 반복문
-cover-img: /assets/img/nextjs.png
-thumbnail-img: /assets/img/nextjs.png
+cover-img: /assets/img/nextjs-bootcamp.png
+thumbnail-img: /assets/img/nextjs-bootcamp.png
 share-img: /assets/img/
 tags: [javaScript]
 author: Detourguru

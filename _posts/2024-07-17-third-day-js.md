@@ -2,8 +2,8 @@
 layout: post
 title: next.js 프로젝트캠프 3일차
 subtitle: JS (3) - 함수와 객체, 호이스팅
-cover-img: /assets/img/nextjs.png
-thumbnail-img: /assets/img/nextjs.png
+cover-img: /assets/img/nextjs-bootcamp.png
+thumbnail-img: /assets/img/nextjs-bootcamp.png
 share-img: /assets/img/
 tags: [javaScript, function, object, hoisting]
 author: Detourguru

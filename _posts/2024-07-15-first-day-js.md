@@ -2,8 +2,8 @@
 layout: post
 title: next.js 프로젝트캠프 1일차
 subtitle: JS (1)
-cover-img: /assets/img/nextjs.png
-thumbnail-img: /assets/img/nextjs.png
+cover-img: /assets/img/nextjs-bootcamp.png
+thumbnail-img: /assets/img/nextjs-bootcamp.png
 share-img: /assets/img/
 tags: [javaScript, async, defer]
 author: Detourguru
