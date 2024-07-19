@@ -1,6 +1,6 @@
 ---
 layout: post
-title: next.js 프로젝트캠프 5일차
+title: next.js 프로젝트캠프 5일차 - 2
 subtitle: TS - typeScript 기초
 cover-img: /assets/img/nextjs.png
 thumbnail-img: /assets/img/nextjs.png
