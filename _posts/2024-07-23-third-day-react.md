@@ -1,6 +1,6 @@
 ---
 layout: post
-title: next.js 프로젝트캠프 8일차
+title: next.js 프로젝트캠프 9일차
 subtitle: 렌더링과 useState, useRef
 cover-img: /assets/img/nextjs-bootcamp.png
 thumbnail-img: /assets/img/nextjs-bootcamp.png
