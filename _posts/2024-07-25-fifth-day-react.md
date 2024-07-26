@@ -1,6 +1,6 @@
 ---
 layout: post
-title: next.js 프로젝트캠프 10일차
+title: next.js 프로젝트캠프 9일차
 subtitle: 리액트 상태관리 - useReducer, context API
 cover-img: /assets/img/nextjs-bootcamp.png
 thumbnail-img: /assets/img/nextjs-bootcamp.png
@@ -76,10 +76,11 @@ import React, { createContext, useReducer } from "react";
 type TThemeAction = { type: string; payload: object };
 
 // createContext함수를 통해 context 생성
+// provider value로 넘겨주는 데이터의 타입을 여기에 지정한다
 export const ThemeContext = createContext<{
   theme: string;
   dispatch?: React.Dispatch<TThemeAction>;
-}>({ theme: "light" });
+}>({ theme: "light" }); // 타입을 맞추기 위한 초기화 값
 
 // 상태변경을 위한 reducer 함수
 const reducer = (state: string, action: TThemeAction) => {
