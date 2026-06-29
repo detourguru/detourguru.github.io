@@ -1,0 +1,4 @@
+baseURL = "https://detourguru.github.io/"
+languageCode = "ko-kr"
+title = "detourguru의 블로그"
+theme = "PaperMod"
