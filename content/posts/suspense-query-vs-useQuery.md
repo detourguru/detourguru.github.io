@@ -14,7 +14,7 @@ title = 'useSuspenseQuery vs useQuery 둘 중 뭘 고를까?'
 - 에러 관리도 상위 `ErrorBoundary`에서 한번에 한다.
 - 타입도 논옵셔널이니까 체이닝 안붙고 깔끔하다.
 
-```
+```tsx
 // useQuery
 const { data, isLoading, isError } = useQuery({ ... });
 if (isLoading) return <Spinner />;
@@ -40,7 +40,7 @@ GET /buttons?locationId=
 
 ### useSuspenseQuery는 enabled 옵션을 제공하지 않는다
 
-```
+```ts
 const { data } = useSuspenseQuery({
   queryKey: ['LOCATION', { id: locationId }],
   queryFn: () => fetchLocation(locationId),
@@ -58,12 +58,12 @@ const { data } = useSuspenseQuery({
 처음에는 enabled 옵션으로 가드를 넣어서 해결해 볼 수 있을 것 같았는데 Suspense는 "이 컴포넌트는 데이터를 반드시 가지고 렌더링된다."는 모델을 전제로 하기 때문에 enabled 옵션으로 조건부 호출을 한다는 개념 자체가 성립하지 않았다.
 그래서 param이 비동기적으로 오거나 조건부 fetch가 필요한 hook은 useQuery로 나머지는 useSuspenseQuery를 그대로 유지했다.
 
-hook이 호출되는 시점에 param이 무조건 정의되어 있으면 -> useSuspenseQuery
-조건부거나 비동기적으로 온다면 -> useQuery + enabled 가드 + 옵셔널 체이닝
+- hook이 호출되는 시점에 param이 무조건 정의되어 있으면 → useSuspenseQuery
+- 조건부거나 비동기적으로 온다면 → useQuery + enabled 가드 + 옵셔널 체이닝
 
 이렇게 전환하고나니 빈 param 요청은 사라지게 되었다.
 
-# 배운 점
+## 배운 점
 
 처음에는 useSuspenseQuery가 useQuery보다 더 좋은 Hook이라고 생각했다.
 

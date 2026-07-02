@@ -29,3 +29,6 @@ yarn-error.log*
 # Temporary files
 *.tmp
 *.temp
+
+# Personal notes / internal docs
+/docs/
