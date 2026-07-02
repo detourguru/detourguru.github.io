@@ -6,7 +6,7 @@ title = 'React.memo가 오히려 리렌더를 유발했던 3가지 이유'
 
 ## 리렌더 하지 말랬더니 더 하는 현상
 
-| memo로 감쌌는데 왜 리렌더가 계속 되지?
+> memo로 감쌌는데 왜 리렌더가 계속 되지?
 
 채팅 서비스를 만들다보니 채팅이 하나 추가될때마다 모든걸 다 다시 그리는 리렌더 현상이 있었고 체감이 될정도로 화면이 많이 느려졌었다.
 
@@ -18,7 +18,7 @@ title = 'React.memo가 오히려 리렌더를 유발했던 3가지 이유'
 
 ### 객체, 배열, 함수를 인라인으로 넘기는 경우
 
-```
+```tsx
 <ChatMessageItem
   actions={["reply", "copy"]}
   style={{ marginTop: 4 }}
@@ -27,7 +27,7 @@ title = 'React.memo가 오히려 리렌더를 유발했던 3가지 이유'
 
 그 경우 memo는 참조를 비교하기 때문에
 
-```
+```ts
 {} !== {}
 [] !== []
 ```
@@ -37,15 +37,15 @@ props가 바뀐 것으로 판단해서 그냥 리렌더한다.
 
 ### children도 props다
 
-```
+```tsx
 const Card = React.memo(({ children }) => <div>{children}</div>);
 
 function Page() {
-return (
-<Card>
-<Button />
-</Card>
-);
+  return (
+    <Card>
+      <Button />
+    </Card>
+  );
 }
 ```
 
@@ -53,7 +53,7 @@ return (
 
 ### context 변경에도 리렌더된다
 
-```
+```tsx
 const UserName = React.memo(() => {
   const { user } = useContext(UserContext);
   return <span>{user.name}</span>;

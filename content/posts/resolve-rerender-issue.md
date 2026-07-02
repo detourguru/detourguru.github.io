@@ -49,7 +49,7 @@ return useReactQuery({
 
 즉 다음과 같은 흐름이 만들어졌다.
 
-데이터를 받아오는 즉시 stale 상태가 된다. > `refetchOnMount` 기본값은 `true` > stale 상태에서 컴포넌트가 다시 마운트되면 즉시 refetch한다.
+데이터를 받아오는 즉시 stale 상태가 된다. → `refetchOnMount` 기본값은 `true` → stale 상태에서 컴포넌트가 다시 마운트되면 즉시 refetch한다.
 
 페이지 이동 시에는 컴포넌트가 `unmount → remount` 되므로 이미 캐시에 데이터가 있어도 모든 Query가 다시 실행되고 있었다.
 
