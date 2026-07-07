@@ -1,7 +1,7 @@
 +++
 date = '2026-07-08T00:13:18+09:00'
 draft = false
-title = '800줄 짜리 zustand store 쪼개기'
+title = '거대 zustand store 도메인 책임 분리하기'
 +++
 
 처음에는 플레이 화면에서 필요한 상태를 하나의 Zustand store에 한번에 관리했다.
