@@ -13,6 +13,11 @@ theme = "PaperMod"
   url = "/about/"
   weight = 20
 
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  series = "series"
+
 [params]
   env = "production"
 

@@ -1,0 +1,21 @@
+{{- with .GetTerms "series" }}
+{{- range . }}
+{{- $seriesPages := .Pages.ByDate }}
+{{- if gt (len $seriesPages) 1 }}
+<aside class="series-box">
+  <div class="series-box-title">시리즈: {{ .LinkTitle }}</div>
+  <ol class="series-box-list">
+    {{- range $p := $seriesPages }}
+    <li{{ if eq $p.Permalink $.Permalink }} class="series-box-current"{{ end }}>
+      {{- if eq $p.Permalink $.Permalink }}
+      <span>{{ $p.Title }}</span>
+      {{- else }}
+      <a href="{{ $p.Permalink }}">{{ $p.Title }}</a>
+      {{- end }}
+    </li>
+    {{- end }}
+  </ol>
+</aside>
+{{- end }}
+{{- end }}
+{{- end }}
