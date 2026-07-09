@@ -1,0 +1,8 @@
+- category: "Core"
+  items: ["React", "TypeScript", "Vite"]
+
+- category: "State & Form"
+  items: ["Zustand", "React Query", "React Hook Form", "Zod"]
+
+- category: "Build & Test"
+  items: ["Vitest", "Playwright", "Sentry"]

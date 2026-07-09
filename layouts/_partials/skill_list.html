@@ -1,0 +1,18 @@
+{{- $skills := hugo.Data.skills }}
+{{- if $skills }}
+<div class="skill-groups">
+  {{- range $skills }}
+  <div class="skill-group">
+    <div class="skill-group-label">
+      {{ .category }}
+      {{- with .note }}<span class="skill-group-note">{{ . }}</span>{{- end }}
+    </div>
+    <div class="skill-group-items">
+      {{- range .items }}
+      <span class="skill-tag">{{ . }}</span>
+      {{- end }}
+    </div>
+  </div>
+  {{- end }}
+</div>
+{{- end }}

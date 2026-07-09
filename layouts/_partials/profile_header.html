@@ -1,0 +1,52 @@
+{{- $profile := site.Params.profile }}
+<header class="profile-header">
+  <div class="profile-header-main">
+    {{- with $profile.displayName }}
+    <div class="profile-name-block">
+      <p class="profile-name">{{ . }}</p>
+      <div class="profile-name-bar"></div>
+    </div>
+    {{- end }}
+    <div class="profile-heading-block">
+      {{- with $profile.role }}
+      <p class="profile-role-label">{{ . }}</p>
+      {{- end }} {{- with .Params.heading }}
+      <h1 class="profile-title">{{ . }}</h1>
+      {{- end }} {{- with .Params.description }}
+      <p class="profile-description">{{ . }}</p>
+      {{- end }}
+    </div>
+  </div>
+  {{- if (or $profile.location $profile.activePeriod $profile.mainStack
+  $profile.email $profile.github) }}
+  <dl class="profile-facts">
+    {{- with $profile.location }}
+    <div class="profile-fact">
+      <dt>위치</dt>
+      <dd>{{ . }}</dd>
+    </div>
+    {{- end }} {{- with $profile.activePeriod }}
+    <div class="profile-fact">
+      <dt>활동 기간</dt>
+      <dd>{{ . }}</dd>
+    </div>
+    {{- end }} {{- with $profile.mainStack }}
+    <div class="profile-fact">
+      <dt>주요 스택</dt>
+      <dd>{{ . }}</dd>
+    </div>
+    {{- end }} {{- if (or $profile.github $profile.email) }}
+    <div class="profile-fact">
+      <dt>연락처</dt>
+      <dd class="profile-fact-links">
+        {{- with $profile.github }}
+        <a href="{{ . }}" target="_blank" rel="noopener">GitHub</a> / {{- end }}
+        {{- with $profile.email }}
+        <a href="mailto:{{ . }}">Email</a>
+        {{- end }}
+      </dd>
+    </div>
+    {{- end }}
+  </dl>
+  {{- end }}
+</header>

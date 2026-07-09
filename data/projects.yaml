@@ -1,0 +1,14 @@
+# TODO: inactive 프로젝트는 지금 Notion 페이지로 연결 중. 나중에 블로그 내부 페이지로 이식하고 url을 내부 링크로 교체할 것.
+- title: "Meetie"
+  description: "IT 직군을 위한 스터디/네트워킹 서비스"
+  url: "https://simplistic-fowl-e8b.notion.site/Meetie-124c24368b5380849e1de0006a9447fa"
+  period: "2024.08 ~ 2024.09"
+  status: "inactive"
+  achievement: "Next.js 2기 과정 우수상 (3등)"
+  tags: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Supabase"]
+- title: "나 집에 갈래!"
+  description: "AI 연인이 삐진 이유를 알아내는 채팅식 게임 서비스"
+  url: "https://simplistic-fowl-e8b.notion.site/129c24368b5380339c10ebe280d3a34b"
+  period: "2024.10"
+  status: "inactive"
+  tags: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Supabase"]

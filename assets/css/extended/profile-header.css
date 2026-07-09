@@ -1,0 +1,115 @@
+.profile-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.75rem;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+}
+
+@media screen and (min-width: 700px) {
+    .profile-header {
+        grid-template-columns: minmax(0, 1fr) 200px;
+        align-items: center;
+        gap: 2.5rem;
+    }
+}
+
+.profile-header-main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.75rem;
+}
+
+.profile-name-block {
+    flex: 0 0 auto;
+}
+
+.profile-name {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    white-space: nowrap;
+}
+
+.profile-name-bar {
+    width: 3rem;
+    height: 4px;
+    margin-top: 0.75rem;
+    background: var(--primary);
+}
+
+.profile-heading-block {
+    flex: 1 1 280px;
+}
+
+.profile-role-label {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--secondary);
+}
+
+.profile-title {
+    margin: 0.5rem 0 0;
+    font-size: 2.2rem;
+    line-height: 1.15;
+}
+
+.profile-description {
+    max-width: 62ch;
+    margin-top: 1rem;
+    color: var(--content);
+    line-height: 1.7;
+}
+
+.profile-facts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
+@media screen and (min-width: 700px) {
+    .profile-facts {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        padding-top: 0;
+        border-top: none;
+    }
+}
+
+.profile-fact dt {
+    margin: 0;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--secondary);
+}
+
+.profile-fact dd {
+    margin: 0.35rem 0 0;
+    font-size: 0.95rem;
+    color: var(--primary);
+    word-break: break-word;
+}
+
+.profile-fact dd a {
+    color: var(--primary);
+    text-underline-offset: 3px;
+}
+
+.profile-fact dd a:hover {
+    color: var(--secondary);
+}
+
+.profile-fact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.7rem;
+}

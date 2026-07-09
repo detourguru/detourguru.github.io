@@ -1,0 +1,133 @@
+.section-heading {
+  font-size: 1.3rem;
+  margin: 0 0 var(--content-gap);
+}
+
+/* Intro (top) */
+.home-intro p {
+  color: var(--content);
+  line-height: 1.7;
+}
+
+/* Projects + latest posts (middle) */
+.project-cards,
+.latest-posts {
+  max-width: var(--main-width);
+  margin: 0 auto 2rem;
+  padding: 0 var(--gap) 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.project-card-list,
+.latest-post-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+@media screen and (max-width: 600px) {
+  .project-card-list,
+  .latest-post-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-card,
+.latest-post-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--entry);
+  transition: border-color 0.2s ease;
+}
+
+.project-card,
+.project-card *,
+.latest-post-card,
+.latest-post-card * {
+  text-decoration: none !important;
+}
+
+.project-card:hover,
+.latest-post-card:hover {
+  border-color: var(--secondary);
+}
+
+.project-card-placeholder {
+  border-style: dashed;
+  opacity: 0.6;
+}
+
+.project-card-placeholder:hover {
+  border-color: var(--border);
+}
+
+.project-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.project-card-title,
+.latest-post-title {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.project-card-status {
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--secondary);
+}
+
+.project-card-status-active {
+  border-color: transparent;
+  background: var(--primary);
+  color: var(--theme);
+}
+
+.project-card-desc,
+.latest-post-summary {
+  font-size: 0.9rem;
+  color: var(--secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.project-card-period,
+.latest-post-date {
+  font-size: 0.8rem;
+  color: var(--secondary);
+}
+
+.project-card-achievement {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.project-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.2rem;
+}
+
+.latest-posts-more {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--secondary);
+}
+
+.latest-posts-more:hover {
+  color: var(--primary);
+}

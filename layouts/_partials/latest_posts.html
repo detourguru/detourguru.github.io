@@ -1,0 +1,19 @@
+{{- $posts := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- $posts = $posts.ByPublishDate.Reverse | first 2 }}
+{{- if $posts }}
+<div class="latest-posts">
+  <h2 class="section-heading">최신 글</h2>
+  <div class="latest-post-list">
+    {{- range $posts }}
+    <a class="latest-post-card" href="{{ .Permalink }}">
+      <span class="latest-post-title">{{ .Title }}</span>
+      <span class="latest-post-date">{{ .PublishDate.Format "2006.01.02" }}</span>
+      {{- if (ne (.Param "hideSummary") true) }}
+      <p class="latest-post-summary">{{ .Summary | plainify | htmlUnescape | truncate 90 }}</p>
+      {{- end }}
+    </a>
+    {{- end }}
+  </div>
+  <a class="latest-posts-more" href="{{ "posts" | relURL }}">모든 글 보기 →</a>
+</div>
+{{- end }}
