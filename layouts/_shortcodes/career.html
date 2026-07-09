@@ -1,0 +1,25 @@
+{{- $career := hugo.Data.career }}
+<div class="career-timeline">
+  {{- range $i, $job := $career }}
+  <div class="career-card{{ if $job.current }} career-card-current{{ end }}" id="career-{{ $i }}">
+    <div class="career-card-header">
+      <h3 class="career-company">{{ $job.company }}</h3>
+      <span class="career-period">{{ $job.period }}</span>
+    </div>
+    {{- with $job.service }}
+    <div class="career-service">{{ . }}</div>
+    {{- end }}
+    {{- with $job.summary }}
+    <p class="career-description">{{ . }}</p>
+    {{- end }}
+    {{- with $job.highlights }}
+    <div class="career-subheading">주요 성과</div>
+    <ul class="career-highlights">
+      {{- range . }}
+      <li>{{ . }}</li>
+      {{- end }}
+    </ul>
+    {{- end }}
+  </div>
+  {{- end }}
+</div>

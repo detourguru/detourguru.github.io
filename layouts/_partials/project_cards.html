@@ -1,0 +1,36 @@
+{{- $projects := hugo.Data.projects }}
+{{- if $projects }}
+<div class="project-cards">
+  <div class="project-card-list">
+    {{- range $projects }}
+    {{- if .title }}
+    <a class="project-card" href="{{ .url }}" {{ if findRE "://" .url }}target="_blank" rel="noopener"{{ end }}>
+      <div class="project-card-top">
+        <span class="project-card-title">{{ .title }}</span>
+        {{- if .status }}
+        <span class="project-card-status project-card-status-{{ .status }}">
+          {{- if eq .status "active" }}Active{{ else }}Inactive{{ end }}
+        </span>
+        {{- end }}
+      </div>
+      {{- with .description }}<span class="project-card-desc">{{ . }}</span>{{- end }}
+      {{- with .period }}<span class="project-card-period">{{ . }}</span>{{- end }}
+      <span class="project-card-achievement{{ if not .achievement }} project-card-achievement-empty{{ end }}">{{ with .achievement }}🏆 {{ . }}{{ else }}&nbsp;{{ end }}</span>
+      {{- with .tags }}
+      <div class="project-card-tags">
+        {{- range . }}
+        <span class="career-tag">{{ . }}</span>
+        {{- end }}
+      </div>
+      {{- end }}
+    </a>
+    {{- else }}
+    <div class="project-card project-card-placeholder">
+      <span class="project-card-title">프로젝트 준비 중</span>
+      <span class="project-card-desc">곧 공개될 예정입니다.</span>
+    </div>
+    {{- end }}
+    {{- end }}
+  </div>
+</div>
+{{- end }}

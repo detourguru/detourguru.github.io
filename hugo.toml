@@ -2,3 +2,29 @@ baseURL = "https://detourguru.github.io/"
 languageCode = "ko-kr"
 title = "detourguru의 블로그"
 theme = "PaperMod"
+
+[[menu.main]]
+  name = "Home"
+  url = "/"
+  weight = 10
+
+[[menu.main]]
+  name = "About"
+  url = "/about/"
+  weight = 20
+
+[params]
+  env = "production"
+
+  [params.profile]
+    role = "프론트엔드 개발자"
+    location = "서울"
+    activePeriod = "2024.08 ~ 현재"
+    mainStack = "React, TypeScript, Next.js"
+    email = "detourguru@gmail.com"
+    github = "https://github.com/detourguru"
+
+[[params.socialIcons]]
+  name = "github"
+  url = "https://github.com/detourguru"
+  title = "GitHub"
