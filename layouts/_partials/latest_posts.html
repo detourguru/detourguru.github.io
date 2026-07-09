@@ -6,6 +6,9 @@
   <div class="latest-post-list">
     {{- range $posts }}
     <a class="latest-post-card" href="{{ .Permalink }}">
+      {{- with .GetTerms "series" }}
+      <span class="latest-post-series-badge">{{ (index . 0).LinkTitle }}</span>
+      {{- end }}
       <span class="latest-post-title">{{ .Title }}</span>
       <span class="latest-post-date">{{ .PublishDate.Format "2006.01.02" }}</span>
       {{- if (ne (.Param "hideSummary") true) }}
