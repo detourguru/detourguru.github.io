@@ -1,6 +1,6 @@
 +++
 date = '2026-07-12T21:48:45+09:00'
-draft = true
+draft = false
 title = '폼은 누가 가지고 있어야 할까?'
 series = ['폼 설계 삽질기']
 +++
