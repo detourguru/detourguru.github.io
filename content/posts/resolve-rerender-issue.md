@@ -1,7 +1,7 @@
 +++
 date = '2026-07-02T23:50:40+09:00'
 draft = false
-title = '리렌더 때문에 동작 하나에 API 요청이 100건 넘게 갔다'
+title = 'React Query 최적화 잘못하면 생기는 일'
 +++
 
 ## React Query로 갈아탔더니 API 요청이 100건 넘게 갔다
