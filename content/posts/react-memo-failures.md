@@ -1,7 +1,7 @@
 +++
 date = '2026-07-01T23:33:46+09:00'
 draft = false
-title = 'React.memo가 오히려 리렌더를 유발했던 3가지 이유'
+title = 'React.memo가 오히려 리렌더를 유발한다?'
 +++
 
 ## 리렌더 하지 말랬더니 더 하는 현상
@@ -19,10 +19,7 @@ title = 'React.memo가 오히려 리렌더를 유발했던 3가지 이유'
 ### 객체, 배열, 함수를 인라인으로 넘기는 경우
 
 ```tsx
-<ChatMessageItem
-  actions={["reply", "copy"]}
-  style={{ marginTop: 4 }}
-/>
+<ChatMessageItem actions={["reply", "copy"]} style={{ marginTop: 4 }} />
 ```
 
 그 경우 memo는 참조를 비교하기 때문에
