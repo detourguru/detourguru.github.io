@@ -42,7 +42,7 @@ GET /buttons?locationId=
 
 ```ts
 const { data } = useSuspenseQuery({
-  queryKey: ['LOCATION', { id: locationId }],
+  queryKey: ["LOCATION", { id: locationId }],
   queryFn: () => fetchLocation(locationId),
   enabled: !!locationId, // ts 에러남
 });
@@ -58,10 +58,22 @@ const { data } = useSuspenseQuery({
 처음에는 enabled 옵션으로 가드를 넣어서 해결해 볼 수 있을 것 같았는데 Suspense는 "이 컴포넌트는 데이터를 반드시 가지고 렌더링된다."는 모델을 전제로 하기 때문에 enabled 옵션으로 조건부 호출을 한다는 개념 자체가 성립하지 않았다.
 그래서 param이 비동기적으로 오거나 조건부 fetch가 필요한 hook은 useQuery로 나머지는 useSuspenseQuery를 그대로 유지했다.
 
-- hook이 호출되는 시점에 param이 무조건 정의되어 있으면 → useSuspenseQuery
-- 조건부거나 비동기적으로 온다면 → useQuery + enabled 가드 + 옵셔널 체이닝
+- hook이 호출되는 시점에 param이 무조건 정의되어 있으면 -> useSuspenseQuery
+- 조건부거나 비동기적으로 온다면 -> useQuery + enabled 가드 + 옵셔널 체이닝
 
 이렇게 전환하고나니 빈 param 요청은 사라지게 되었다.
+
+## 산넘어 직렬 워터폴
+
+그런데 에디터에서 조회 화면에 진입해보면 참조 데이터 쿼리들이 줄줄이 이어지면서 API 22요청에 4.6초가 걸리고 있었다 (중복 fetch도 많았고 말이다).
+
+한 컴포넌트에서 useSuspenseQuery를 여러 번 부르면 첫 쿼리가 suspend되는 동안 두 번째 쿼리는 시작조차 못 하기 때문임을 알게됐다. 앞 요청이 끝나야 다음 요청이 출발하는 직렬 워터폴이 생긴 것이다.
+
+Suspense를 제거하고 useQuery로 전환한다음에 enabled 옵션을 사용할까? 근데 그렇게되면 모든 폼에 null 가드가 필요해지기도 했고 많이 쓰는 화면이라 위험이 너무 컸다.
+
+그래서 진입 시점에 `prefetchQuery`로 미리 캐싱을 하는 방법을 선택했다. 화면 진입 시 공용 참조 목록을 prefetchQuery로 병렬로 쏘아 캐시를 해두면 이후 useSuspenseQuery들은 캐시 히트라 suspend 없이 통과했다. 결과적으로는 10개 요청에 2.4초로 줄어들어 훨씬 가벼워졌다.
+
+한 가지 주의할 점은 prefetch 키가 실제 소비하는 쿼리 키와 한 글자라도 다르면 캐시 미스라서 아무 효과가 없다는 것이다. 그래서 prefetch 키는 소비 쿼리 키와 완전히 동일한 상수를 쓰도록 강제했다.
 
 ## 배운 점
 
