@@ -112,14 +112,13 @@ node.next를 읽는 게 훨씬 쉬워 보이는데 왜 이렇게 간접적으로
 용어를 공부하고 나서 내 이벤트 시스템 코드를 다시 열어봤다. 위에서 다룬 선택지 데이터와 달리 이벤트끼리 연결되는 부분(연계 이벤트)과 캐릭터 생성 스텝은 애초에 "이벤트는 상하위 개념 없이 같은 뎁스에서 서로를 참조할 수 있어야 한다"는 요구만 가지고 구조를 이렇게 잡았었다.
 
 ```ts
-// 이벤트는 평탄한 배열에, 연결은 ID 참조로만
 type EditorData = {
   events: Array<{ id: string; trigger: string; basicScript: Script[] }>;
 };
 
 interface LinkedEvents {
   type: "random" | "priority" | "choices"; // 다음 이벤트 선정 방식
-  data: Array<{ eventId: string }>; // 참조 = 간선
+  data: Array<{ eventId: string }>; // 연결은 id 참조로
 }
 ```
 
