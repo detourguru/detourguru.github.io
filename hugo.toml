@@ -24,7 +24,7 @@ theme = "PaperMod"
   [params.profile]
     role = "프론트엔드 개발자"
     location = "서울"
-    activePeriod = "2024.08 ~ 현재"
+    activePeriod = "2025.02 ~ 현재"
     mainStack = "React, TypeScript, Next.js"
     email = "detourguru@gmail.com"
     github = "https://github.com/detourguru"
