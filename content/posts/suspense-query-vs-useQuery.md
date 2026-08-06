@@ -1,7 +1,7 @@
 +++
 date = '2026-07-04T23:48:43+09:00'
 draft = false
-title = 'useSuspenseQuery vs useQuery 둘 중 뭘 고를까?'
+title = 'useSuspenseQuery vs useQuery 뭘 언제 써야할까?'
 +++
 
 ## useSuspenseQuery를 선택한 이유
