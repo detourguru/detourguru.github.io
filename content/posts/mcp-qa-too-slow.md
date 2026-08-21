@@ -2,7 +2,7 @@
 date = '2026-08-06T00:14:11+09:00'
 draft = false
 title = 'Playwright MCP로 QA 속도 25배 개선하기'
-description = 'Playwright MCP로 QA를 자동화했더니 클릭 한 번에 반나절이 걸렸다. 실행은 코드가, 판단은 모델이 맡도록 나누고 spec을 자산으로 쌓아 25배 빨라진 과정.'
+description = 'Playwright MCP로 QA를 자동화했더니 너무 느렸다. 실행은 코드가, 판단은 모델이 맡도록 나눠 25배 빨라진 과정.'
 tags = ["AI", "MCP", "테스트"]
 +++
 

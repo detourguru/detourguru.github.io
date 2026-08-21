@@ -2,7 +2,7 @@
 date = '2026-08-20T18:11:03+09:00'
 draft = false
 title = '타입 선언 4개를 배열 하나로 합치기'
-description = '요청과 응답의 키가 다른 외부 API 코드 테이블 때문에 타입 선언이 4개로 늘었다. const 배열 하나에서 리터럴 타입을 뽑아내는 createCodeTable을 만든 과정.'
+description = '요청과 응답의 키가 다른 외부 API 때문에 타입 선언이 4개로 늘었다. 배열 하나에서 리터럴 타입을 뽑아낸 과정.'
 tags = ["TypeScript", "설계"]
 +++
 

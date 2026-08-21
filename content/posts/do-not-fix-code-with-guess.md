@@ -2,7 +2,7 @@
 date = '2026-07-07T00:12:05+09:00'
 draft = false
 title = 'try-catch가 항상 정답이 아닌 이유'
-description = 'try-catch로 덮은 TypeError는 사라지지 않고 더 늦게, 더 찾기 어려운 곳에서 다시 드러난다. 원인을 모른 채 감으로 코드를 고치면 안 되는 이유.'
+description = 'try-catch로 덮은 TypeError는 사라지지 않고 더 찾기 어려운 곳에서 다시 드러난다. 감으로 고치면 안 되는 이유.'
 tags = ["에러 처리", "디버깅"]
 +++
 

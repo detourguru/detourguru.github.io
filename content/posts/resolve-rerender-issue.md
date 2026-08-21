@@ -2,7 +2,7 @@
 date = '2026-07-05T23:50:40+09:00'
 draft = false
 title = 'React Query 최적화 잘못하면 생기는 일'
-description = 'React Query로 갈아탔더니 페이지 이동마다 API가 29개, 뮤테이션 한 번에 109건씩 나갔다. 래퍼 훅의 fallback 누락과 쿼리 전역 무효화를 잡은 기록.'
+description = 'React Query로 갈아탔더니 페이지 이동마다 API가 29개씩 나갔다. 래퍼 훅 fallback과 전역 무효화를 잡은 기록.'
 tags = ["React", "React Query", "캐싱", "성능 최적화"]
 +++
 

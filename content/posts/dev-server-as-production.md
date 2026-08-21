@@ -2,7 +2,7 @@
 date = '2026-07-16T23:32:36+09:00'
 draft = false
 title = '운영 서버가 npm run dev로 돌고있었다'
-description = '운영 서버가 npm run dev로 돌고 있었다. 추측 대신 계측부터 하고, 왕복 횟수 × RTT 구조를 걷어내 진짜 운영 빌드로 옮긴 실측 Before/After 기록.'
+description = '운영 서버가 npm run dev로 돌고 있었다. 추측 대신 계측부터 하고 진짜 운영 빌드로 옮긴 실측 Before/After.'
 tags = ["웹 성능", "성능 최적화", "배포"]
 +++
 

@@ -2,7 +2,7 @@
 date = '2026-08-03T19:45:47+09:00'
 draft = false
 title = 'sentry 캡처도 역할 분리가 필요하다'
-description = 'Sentry를 붙였는데 특정 API 실패가 하나도 잡히지 않았다. 실패를 throw하지 않는 REST 래퍼가 만든 사각지대를 찾고 이벤트 그룹핑과 테스트까지 정리한 기록.'
+description = 'Sentry를 붙였는데 특정 API 실패가 잡히지 않았다. throw하지 않는 REST 래퍼가 만든 사각지대를 찾은 기록.'
 tags = ["에러 처리", "디버깅"]
 +++
 

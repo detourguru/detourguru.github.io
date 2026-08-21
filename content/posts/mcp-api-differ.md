@@ -2,7 +2,7 @@
 date = '2026-08-21T00:15:11+09:00'
 draft = false
 title = 'MCP가 도대체 뭐길래 다들 MCP MCP'
-description = 'MCP를 그냥 AI용 API 정도로 알고 쓰다가 백엔드의 MCP 서버 코드를 직접 뜯어봤다. JSON-RPC 위에 얹힌 공통 인터페이스가 무엇을 바꾸는지, 일반 API와 무엇이 다른지 정리했다.'
+description = 'MCP를 AI용 API 정도로만 알고 쓰다가 백엔드의 MCP 서버 코드를 직접 뜯어봤다. 일반 API와 무엇이 다른지 정리했다.'
 tags = ["AI", "MCP"]
 +++
 
