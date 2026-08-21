@@ -8,7 +8,13 @@
   tags: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Supabase"]
 - title: "나 집에 갈래!"
   description: "AI 연인이 삐진 이유를 알아내는 채팅식 게임 서비스"
-  url: "https://simplistic-fowl-e8b.notion.site/129c24368b5380339c10ebe280d3a34b"
+  url: "https://iwgh.vercel.app/scene"
   period: "2024.10"
-  status: "inactive"
+  status: "active"
   tags: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Supabase"]
+- title: "회전문"
+  description: "캐스팅보드 이미지를 Vision LLM으로 파싱해 회차별 캐스팅을 조회하는 서비스"
+  url: "https://hoejeonmun.vercel.app/"
+  period: "2026.08 ~"
+  status: "active"
+  tags: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Supabase", "Gemini API", "PWA"]
