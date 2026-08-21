@@ -2,6 +2,8 @@
 date = '2026-07-04T23:48:43+09:00'
 draft = false
 title = 'useSuspenseQuery vs useQuery 뭘 언제 써야할까?'
+description = 'useSuspenseQuery를 골랐다가 enabled 옵션이 없어서 막혔고 직렬 워터폴까지 만났다. 두 훅을 이원화해 해결하면서 정리한 선택 기준.'
+tags = ["React", "React Query", "성능 최적화"]
 +++
 
 ## useSuspenseQuery를 선택한 이유

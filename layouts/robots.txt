@@ -1,0 +1,71 @@
+{{- if not (hugo.IsProduction | or (eq site.Params.env "production")) -}}
+# 프리뷰/로컬 빌드는 통째로 막는다.
+User-agent: *
+Disallow: /
+{{- else -}}
+# ---------------------------------------------------------------
+# 학습/수집 목적의 AI 크롤러는 차단한다.
+# 검색엔진(Googlebot, bingbot, Yeti, Daumoa)은 아래 와일드카드 그룹에서
+# 계속 허용되므로 검색 노출에는 영향이 없다.
+#
+# robots.txt는 어디까지나 요청이다. 규칙을 지키는 크롤러만 따른다.
+# ---------------------------------------------------------------
+
+# OpenAI
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: OAI-SearchBot
+Disallow: /
+
+# Anthropic
+User-agent: ClaudeBot
+User-agent: Claude-Web
+User-agent: Claude-User
+User-agent: Claude-SearchBot
+User-agent: anthropic-ai
+Disallow: /
+
+# Google Gemini 학습용.
+# Googlebot과는 별개라서 이걸 막아도 검색 순위는 그대로다.
+User-agent: Google-Extended
+Disallow: /
+
+# Apple Intelligence 학습용. Applebot(검색)과는 별개다.
+User-agent: Applebot-Extended
+Disallow: /
+
+# Common Crawl. 상당수 학습 데이터셋의 출처다.
+User-agent: CCBot
+Disallow: /
+
+# Meta
+User-agent: FacebookBot
+User-agent: meta-externalagent
+User-agent: meta-externalfetcher
+Disallow: /
+
+# 그 외 수집 봇
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Bytespider
+User-agent: Amazonbot
+User-agent: cohere-ai
+User-agent: cohere-training-data-crawler
+User-agent: Diffbot
+User-agent: Omgilibot
+User-agent: Omgili
+User-agent: ImagesiftBot
+User-agent: YouBot
+User-agent: Timpibot
+User-agent: AI2Bot
+User-agent: Kangaroo Bot
+User-agent: PanguBot
+User-agent: Webzio-Extended
+Disallow: /
+
+# 검색엔진을 포함한 나머지는 전부 허용
+User-agent: *
+Disallow:
+
+Sitemap: {{ "sitemap.xml" | absURL }}
+{{- end -}}

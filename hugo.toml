@@ -1,7 +1,19 @@
 baseURL = "https://detourguru.github.io/"
-languageCode = "ko-kr"
+locale = "ko-kr"  # Hugo 0.158+ 에서 languageCode 를 대체
+defaultContentLanguage = "ko"
 title = "detourguru의 블로그"
 theme = "PaperMod"
+
+# robots.txt 생성
+enableRobotsTXT = true
+
+enableGitInfo = true
+
+[frontmatter]
+  lastmod = [":git", "lastmod", "date"]
+
+[services.googleAnalytics]
+  ID = "G-JJHM4Z3H62"
 
 [[menu.main]]
   name = "Home"
@@ -15,11 +27,17 @@ theme = "PaperMod"
 
 [taxonomies]
   tag = "tags"
-  category = "categories"
+  # 필요할때 되살릴 것
+  # category = "categories" 
   series = "series"
 
 [params]
   env = "production"
+  author = "detourguru"
+  description = "프론트엔드 개발자 김채연의 기술 블로그. React, TypeScript, Next.js로 실무에서 부딪힌 리렌더링, 상태 관리, 폼 설계 문제와 그 해결 과정을 기록합니다."
+  keywords = ["프론트엔드", "React", "TypeScript", "Next.js", "Zustand", "상태 관리", "성능 최적화", "개발 블로그"]
+
+  images = ["og-image.png"]
 
   [params.profile]
     role = "프론트엔드 개발자"
@@ -28,6 +46,12 @@ theme = "PaperMod"
     mainStack = "React, TypeScript, Next.js"
     email = "detourguru@gmail.com"
     github = "https://github.com/detourguru"
+
+  [params.analytics.google]
+    SiteVerificationTag = ""
+
+  [params.analytics.naver]
+    SiteVerificationTag = ""
 
 [[params.socialIcons]]
   name = "github"

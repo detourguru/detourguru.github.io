@@ -2,6 +2,8 @@
 date = '2026-07-01T23:33:46+09:00'
 draft = false
 title = 'React.memo가 오히려 리렌더를 유발한다?'
+description = 'React.memo를 붙였는데 리렌더가 오히려 늘었다. 인라인 객체·배열·함수, children, context까지 memo를 깨트리는 경우를 하나씩 찾아낸 기록.'
+tags = ["React", "리렌더링", "성능 최적화"]
 +++
 
 ## 리렌더 하지 말랬더니 더 하는 현상

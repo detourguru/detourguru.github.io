@@ -2,6 +2,8 @@
 date = '2026-07-02T00:19:01+09:00'
 draft = false
 title = 'Zustand에서 불필요한 리렌더를 막는 법'
+description = '채팅 하나가 추가될 때마다 헤더·푸터·사이드바까지 전부 리렌더됐다. selector, useShallow, subscribeWithSelector 세 단계로 구독 범위를 좁힌 기록.'
+tags = ["React", "Zustand", "상태 관리", "리렌더링", "성능 최적화"]
 +++
 
 ## 채팅 하나 추가됐을 뿐인데

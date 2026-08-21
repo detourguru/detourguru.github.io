@@ -2,6 +2,8 @@
 date = '2026-07-12T18:47:15+09:00'
 draft = false
 title = 'Form, 내가 만들기 vs 남이 만든 거 쓰기'
+description = '폼 상태를 전역 스토어에 넣었다가 겪은 문제와 Controlled/Uncontrolled의 차이, 그리고 React Hook Form + Zod로 옮기면서 세운 라이브러리 도입 기준.'
+tags = ["React", "폼", "상태 관리"]
 series = ['폼 설계 삽질기']
 +++
 
