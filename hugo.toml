@@ -34,7 +34,7 @@ enableGitInfo = true
 [params]
   env = "production"
   author = "detourguru"
-  description = "프론트엔드 개발자 김채연의 기술 블로그. React, TypeScript, Next.js로 실무에서 부딪힌 리렌더링, 상태 관리, 폼 설계 문제와 그 해결 과정을 기록합니다."
+  description = "프론트엔드 개발자 detourguru의 기술 블로그. 실무에서 부딪힌 FE 문제와 그 해결 과정을 기록합니다."
   keywords = ["프론트엔드", "React", "TypeScript", "Next.js", "Zustand", "상태 관리", "성능 최적화", "개발 블로그"]
 
   images = ["og-image.png"]
