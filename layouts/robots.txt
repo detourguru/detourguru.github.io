@@ -1,71 +1,102 @@
 {{- if not (hugo.IsProduction | or (eq site.Params.env "production")) -}}
-# 프리뷰/로컬 빌드는 통째로 막는다.
 User-agent: *
 Disallow: /
 {{- else -}}
-# ---------------------------------------------------------------
-# 학습/수집 목적의 AI 크롤러는 차단한다.
-# 검색엔진(Googlebot, bingbot, Yeti, Daumoa)은 아래 와일드카드 그룹에서
-# 계속 허용되므로 검색 노출에는 영향이 없다.
-#
-# robots.txt는 어디까지나 요청이다. 규칙을 지키는 크롤러만 따른다.
-# ---------------------------------------------------------------
-
-# OpenAI
-User-agent: GPTBot
-User-agent: ChatGPT-User
-User-agent: OAI-SearchBot
-Disallow: /
-
-# Anthropic
-User-agent: ClaudeBot
-User-agent: Claude-Web
-User-agent: Claude-User
-User-agent: Claude-SearchBot
-User-agent: anthropic-ai
-Disallow: /
-
-# Google Gemini 학습용.
-# Googlebot과는 별개라서 이걸 막아도 검색 순위는 그대로다.
-User-agent: Google-Extended
-Disallow: /
-
-# Apple Intelligence 학습용. Applebot(검색)과는 별개다.
-User-agent: Applebot-Extended
-Disallow: /
-
-# Common Crawl. 상당수 학습 데이터셋의 출처다.
-User-agent: CCBot
-Disallow: /
-
-# Meta
-User-agent: FacebookBot
-User-agent: meta-externalagent
-User-agent: meta-externalfetcher
-Disallow: /
-
-# 그 외 수집 봇
-User-agent: PerplexityBot
-User-agent: Perplexity-User
-User-agent: Bytespider
-User-agent: Amazonbot
-User-agent: cohere-ai
-User-agent: cohere-training-data-crawler
-User-agent: Diffbot
-User-agent: Omgilibot
-User-agent: Omgili
-User-agent: ImagesiftBot
-User-agent: YouBot
-User-agent: Timpibot
-User-agent: AI2Bot
-User-agent: Kangaroo Bot
-User-agent: PanguBot
-User-agent: Webzio-Extended
-Disallow: /
-
-# 검색엔진을 포함한 나머지는 전부 허용
 User-agent: *
 Disallow:
 
 Sitemap: {{ "sitemap.xml" | absURL }}
+
+# The groups below opt out of AI training and content scraping.
+# Search engines (Googlebot, bingbot, Yeti, Daumoa) are unaffected
+# and stay allowed by the wildcard group above.
+# robots.txt is only a request; it binds crawlers that choose to honor it.
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Claude-User
+Disallow: /
+
+User-agent: Claude-SearchBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+User-agent: meta-externalfetcher
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Perplexity-User
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: cohere-training-data-crawler
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: Omgili
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: YouBot
+Disallow: /
+
+User-agent: Timpibot
+Disallow: /
+
+User-agent: AI2Bot
+Disallow: /
+
+User-agent: PanguBot
+Disallow: /
+
+User-agent: Webzio-Extended
+Disallow: /
+
 {{- end -}}
