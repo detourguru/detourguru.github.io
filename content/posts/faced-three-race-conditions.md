@@ -3,7 +3,7 @@ date = '2026-07-10T00:14:11+09:00'
 draft = false
 title = '중복 실행 방지 락은 진입 시점에 걸자'
 description = 'SSE 중복 연결, SQLite 배치 재진입, 채팅 중복 전송. 도메인은 달랐지만 원인은 같았다. 락을 진입 시점에 건 기록.'
-tags = ["동시성", "디버깅"]
+tags = ["디버깅", "React"]
 +++
 
 개발하면서 가장 해결하기 어려웠던 버그는 간헐적으로 발생하는 문제였다. 재현이 어렵고 코드상으로는 문제가 없어 보여서 원인을 찾는 데 시간이 좀 걸렸기 때문이다.
@@ -52,13 +52,15 @@ useEffect(() => {
 
   connectingRef.current = true; // 여기서 바로 상태 변경
 
-  fetchAuthToken().then((token) => {
-  eventSourceRef.current = new EventSource(...);
-  connectingRef.current = false; // 락 해제
-})
-.catch(() => {
-  connectingRef.current = false; // 에러 시에도 락은 해제해준다
-});
+  fetchAuthToken()
+    .then((token) => {
+      eventSourceRef.current = new EventSource(`/sse?token=${token}`);
+      connectingRef.current = false; // 락 해제
+    })
+    .catch(() => {
+      connectingRef.current = false; // 에러 시에도 락은 해제해준다
+    });
+}, []);
 ```
 
 ## 두 번째: SQLite 배치 재진입

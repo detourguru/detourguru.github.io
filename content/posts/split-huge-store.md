@@ -3,7 +3,7 @@ date = '2026-07-08T00:13:18+09:00'
 draft = false
 title = 'zustand store의 책임을 분리하는 기준을 뭘로 잡을까?'
 description = '플레이 화면 상태를 Zustand store 하나에 몰아넣었다가 쪼갠 이야기. 도메인 기준으로 나눈 과정을 정리했다.'
-tags = ["React", "Zustand", "상태 관리", "설계"]
+tags = ["React", "상태 관리", "설계"]
 +++
 
 처음에는 플레이 화면에서 필요한 상태를 하나의 Zustand store에 한번에 관리했다.

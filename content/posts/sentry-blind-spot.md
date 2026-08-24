@@ -3,7 +3,7 @@ date = '2026-08-03T19:45:47+09:00'
 draft = false
 title = 'sentry 캡처도 역할 분리가 필요하다'
 description = 'Sentry를 붙였는데 특정 API 실패가 잡히지 않았다. throw하지 않는 REST 래퍼가 만든 사각지대를 찾은 기록.'
-tags = ["에러 처리", "디버깅", "테스트"]
+tags = ["디버깅", "테스트"]
 +++
 
 Sentry를 붙이고 나면 뭔가 마음이 편해지는 건 나만 그런가? 렌더링 크래시 이벤트 몇 개가 대시보드에 찍히는 걸 보고 나면 이제 모든 에러를 다 볼 수 있겠지 싶어진다. 그런데 며칠 뒤에 특정 API가 계속 실패한다는 제보를 받고 자신만만하게 대시보드를 열었더니 API 호출 실패 이벤트가 하나도 없었다.
@@ -39,7 +39,7 @@ try {
 
 ## 뭐가 캡처되고 뭐가 안 되는지 테스트로 박아두자
 
-주석이나 문서로 작성해두는 것보다는 테스트로 고정해두는 게 제일 명확하고, 어디에 구멍이 났는지 가장 먼저 확인할 수 있을 것 같아 테스트 코드로 케이스들을 작성해뒀다.
+주석이나 문서로 작성해두는 것보다는 테스트로 고정해두는 게 제일 명확하고, 어디에 구멍이 났는지 가장 먼저 확인할 수 있을 것 같아 테스트 코드로 케이스들을 작성해뒀다. 특히 `500은 캡처하지 않는다` 같은 건 나중에 누가 봐도 버그로 보이는 결정이다보니 테스트코드를 추가해두는게 혼란이 없을 것 같았다.
 
 ```ts
 // 네트워크 단절 -> 캡처됨
@@ -67,9 +67,3 @@ expect(captureException).not.toHaveBeenCalled();
 솔직히 쿼리스트링만 잘라냈지 path에 남은 id는 그대로라 엔드포인트 태그를 완전 깨끗하게 관리하고 있는 건 아니다. 그래도 이 정도로도 필요한 만큼 현상을 확인하기에 큰 도움이 됐다. 더 낮은 수준의 cardinality가 필요해지면 id를 `/{id}`로 정규화하거나 `extra` 필드로 옮기는 게 다음 단계일 것 같다.
 
 에러 모니터링은 어디에 딱 붙인다고 모든 에러를 다 캡처하진 못한다. 대신 개발자가 누가 뭘 잡을지 결정해줄 수 있을 때 가장 유용하게 쓸 수 있는 것 같다.
-
-## 참고 자료
-
-- [Sentry — `captureException`](https://docs.sentry.io/platforms/javascript/usage/)
-- [Sentry — Filtering Events](https://docs.sentry.io/platforms/javascript/configuration/filtering/)
-- [Vitest — esbuild 기반 트랜스파일](https://vitest.dev/guide/features.html)

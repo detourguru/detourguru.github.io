@@ -3,7 +3,7 @@ date = '2026-07-04T23:48:43+09:00'
 draft = false
 title = 'useSuspenseQuery vs useQuery 뭘 언제 써야할까?'
 description = 'useSuspenseQuery를 골랐다가 enabled가 없어 막혔고 직렬 워터폴까지 만났다. 두 훅을 이원화한 선택 기준.'
-tags = ["React", "React Query", "성능 최적화"]
+tags = ["React", "성능 최적화"]
 +++
 
 ## useSuspenseQuery를 선택한 이유
@@ -73,7 +73,7 @@ const { data } = useSuspenseQuery({
 
 Suspense를 제거하고 useQuery로 전환한다음에 enabled 옵션을 사용할까? 근데 그렇게되면 모든 폼에 null 가드가 필요해지기도 했고 많이 쓰는 화면이라 위험이 너무 컸다.
 
-그래서 진입 시점에 `prefetchQuery`로 미리 캐싱을 하는 방법을 선택했다. 화면 진입 시 공용 참조 목록을 prefetchQuery로 병렬로 쏘아 캐시를 해두면 이후 useSuspenseQuery들은 캐시 히트라 suspend 없이 통과했다. 결과적으로는 10개 요청에 2.4초로 줄어들어 훨씬 가벼워졌다.
+그래서 진입 시점에 `prefetchQuery`로 미리 캐싱을 하는 방법을 선택했다. 화면 진입 시 공용 참조 목록을 prefetchQuery로 병렬로 쏘아 캐시를 해두면 이후 useSuspenseQuery들은 캐시 히트라 suspend 없이 통과했다. 결과적으로 22개였던 요청이 10개로 줄어 훨씬 가벼워졌다.
 
 한 가지 주의할 점은 prefetch 키가 실제 소비하는 쿼리 키와 한 글자라도 다르면 캐시 미스라서 아무 효과가 없다는 것이다. 그래서 prefetch 키는 소비 쿼리 키와 완전히 동일한 상수를 쓰도록 강제했다.
 

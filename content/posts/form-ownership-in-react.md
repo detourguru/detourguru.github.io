@@ -3,7 +3,7 @@ date = '2026-07-14T21:48:45+09:00'
 draft = false
 title = '폼은 누가 가지고 있어야 할까?'
 description = 'useForm()을 어디서 호출할지는 결국 폼 상태의 소유권 문제였다. 페이지·Layout·전역 스토어를 비교한 과정.'
-tags = ["React", "폼", "상태 관리", "설계"]
+tags = ["React", "상태 관리", "설계"]
 series = ['폼 설계 삽질기']
 +++
 

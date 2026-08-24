@@ -3,7 +3,7 @@ date = '2026-08-21T00:15:11+09:00'
 draft = false
 title = 'MCP가 도대체 뭐길래 다들 MCP MCP'
 description = 'MCP를 AI용 API 정도로만 알고 쓰다가 백엔드의 MCP 서버 코드를 직접 뜯어봤다. 일반 API와 무엇이 다른지 정리했다.'
-tags = ["AI", "MCP"]
+tags = ["AI", "설계"]
 +++
 
 요즘 MCP가 참 핫한데 나도 MCP를 제법 활용하고 있다. 예를들면 클로드한테 구글 캘린더 일정 추가하라고 하기, 트렐로에 카드 추가하라고 하기 등등. [Playwright MCP로 QA 속도를 개선한 글](https://detourguru.github.io/posts/mcp-qa-too-slow/)도 하나 썼다.

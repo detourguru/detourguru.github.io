@@ -1,12 +1,12 @@
 +++
 date = '2026-07-01T23:33:46+09:00'
 draft = false
-title = 'React.memo가 오히려 리렌더를 유발한다?'
-description = 'React.memo를 붙였는데 리렌더가 오히려 늘었다. 인라인 객체·children·context 등 memo를 깨트리는 경우들.'
-tags = ["React", "리렌더링", "성능 최적화"]
+title = 'React.memo를 붙였는데 리렌더가 안 줄었다'
+description = 'memo를 붙여도 리렌더 횟수는 그대로였다. 비교를 깨트리는 인라인 객체·children·context, 그리고 진짜 범인이었던 prop 하나.'
+tags = ["React", "성능 최적화"]
 +++
 
-## 리렌더 하지 말랬더니 더 하는 현상
+## 리렌더 하지 말랬는데 계속 하는 현상
 
 > memo로 감쌌는데 왜 리렌더가 계속 되지?
 
@@ -16,7 +16,7 @@ tags = ["React", "리렌더링", "성능 최적화"]
 
 그래서 이 비용을 줄여보기위해 거의 모든 곳에 memo나 useMemo를 통해 리렌더를 줄여보려 노력한 적이 있었다.
 
-하지만 기대하는 것처럼 드라마틱한 효과가 없었다. 오히려 deps 관리 때문에 더 비용이 증가하기만 했다.
+하지만 기대하는 것처럼 드라마틱한 효과가 없었다. 오히려 deps 관리 때문에 더 비용이 증가하기만 했다. 그렇다면 왜 memo는 아무일도 안했던 걸까?
 
 ### 객체, 배열, 함수를 인라인으로 넘기는 경우
 
@@ -48,7 +48,8 @@ function Page() {
 }
 ```
 
-이 `<Button />` 컴포넌트는 memo를 하고있지만 사실은 렌더마다 새로운 React element를 생성한다. Wrapper인 Card 입장에서 children은 항상 새 값이라 memo의 의미가 없어지는 것이다.
+여기서 memo로 감싼 건 `Button`이 아니라 `Card`다. 그런데 Page가 렌더될 때마다 `<Button />`은 새로운 React element로 다시 만들어지고, 그 element가 Card의 `children` prop으로 들어간다. Card 입장에서는 children이 매번 새 값이니 memo 비교가 의미가 없다.
+
 
 ### context 변경에도 리렌더된다
 
