@@ -4,9 +4,9 @@
   <div class="project-card-list">
     {{- range $projects }}
     {{- if .title }}
-    <a class="project-card" href="{{ .url }}" {{ if findRE "://" .url }}target="_blank" rel="noopener"{{ end }}>
+    <div class="project-card">
       <div class="project-card-top">
-        <span class="project-card-title">{{ .title }}</span>
+        <a class="project-card-title" href="{{ .url }}" {{ if findRE "://" .url }}target="_blank" rel="noopener"{{ end }}>{{ .title }}</a>
         {{- if .status }}
         <span class="project-card-status project-card-status-{{ .status }}">
           {{- if eq .status "active" }}Active{{ else }}Inactive{{ end }}
@@ -16,14 +16,10 @@
       {{- with .description }}<span class="project-card-desc">{{ . }}</span>{{- end }}
       {{- with .period }}<span class="project-card-period">{{ . }}</span>{{- end }}
       <span class="project-card-achievement{{ if not .achievement }} project-card-achievement-empty{{ end }}">{{ with .achievement }}🏆 {{ . }}{{ else }}&nbsp;{{ end }}</span>
-      {{- with .tags }}
-      <div class="project-card-tags">
-        {{- range . }}
-        <span class="career-tag">{{ . }}</span>
-        {{- end }}
-      </div>
+      {{- with .repo }}
+      <a class="project-card-repo" href="{{ . }}" target="_blank" rel="noopener">GitHub</a>
       {{- end }}
-    </a>
+    </div>
     {{- else }}
     <div class="project-card project-card-placeholder">
       <span class="project-card-title">프로젝트 준비 중</span>
