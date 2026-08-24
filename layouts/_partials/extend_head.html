@@ -1,0 +1,26 @@
+{{- $allowed := slice -}}
+{{- with site.Data.tags -}}
+  {{- with .allowed -}}
+    {{- $allowed = . -}}
+  {{- end -}}
+{{- end -}}
+
+{{- with .Params.tags -}}
+
+  {{- if not $allowed -}}
+    {{- errorf "태그 검증: data/tags.yaml 의 allowed 목록을 읽을 수 없습니다. 파일이 지워졌거나 형식이 깨졌는지 확인하세요." -}}
+  {{- end -}}
+
+  {{- /* 에러 메시지에 띄울 위치. 번들 페이지 등 .File 이 없는 경우를 대비한다. */ -}}
+  {{- $where := $.RelPermalink -}}
+  {{- with $.File -}}
+    {{- $where = .Path -}}
+  {{- end -}}
+
+  {{- range . -}}
+    {{- if not (in $allowed .) -}}
+      {{- errorf "태그 검증: %q 는 등록되지 않은 태그입니다 (%s). data/tags.yaml 의 allowed 에 추가하거나 기존 태그를 쓰세요.\n  허용된 태그: %s" . $where (delimit $allowed ", ") -}}
+    {{- end -}}
+  {{- end -}}
+
+{{- end -}}
