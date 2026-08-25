@@ -1,0 +1,125 @@
+﻿{{- /*
+  posts 하위 단일 페이지일 때 assets/og/base.jpg 위에 브랜드 라벨과 글 제목을 얹은 OG 카드를
+  빌드 타임에 굽고 그걸 반환한다. 그 외 페이지는 원복 fallback
+*/ -}}
+
+{{- $imgs := slice -}}
+
+{{- $base := resources.Get "og/base.jpg" -}}
+{{- $font := resources.Get "og/NotoSansKR-Bold.ttf" -}}
+
+{{- if and .IsPage (eq .Section "posts") $base $font -}}
+
+  {{- $size := 58 -}}
+  {{- $lineGap := 16 -}}
+  {{- $maxW := 20 -}}
+
+  {{- $titleW := 0 -}}
+  {{- range split .Title "" -}}
+    {{- $titleW = add $titleW (cond (gt (len .) 1) 2 1) -}}
+  {{- end -}}
+  {{- if gt $titleW 36 -}}
+    {{- $size = 46 -}}
+    {{- $lineGap = 14 -}}
+    {{- $maxW = div (add $titleW 1) 2 -}}
+  {{- end -}}
+
+  {{- $lines := slice -}}
+  {{- $cur := "" -}}
+  {{- $curW := 0 -}}
+  {{- range $word := split .Title " " -}}
+    {{- $wordW := 0 -}}
+    {{- range split $word "" -}}
+      {{- $wordW = add $wordW (cond (gt (len .) 1) 2 1) -}}
+    {{- end -}}
+    {{- if and (gt $curW 0) (gt (add $curW 1 $wordW) $maxW) -}}
+      {{- $lines = $lines | append $cur -}}
+      {{- $cur = $word -}}
+      {{- $curW = $wordW -}}
+    {{- else -}}
+      {{- $cur = cond (gt $curW 0) (printf "%s %s" $cur $word) $word -}}
+      {{- $curW = cond (gt $curW 0) (add $curW 1 $wordW) $wordW -}}
+    {{- end -}}
+  {{- end -}}
+  {{- with $cur }}{{ $lines = $lines | append . }}{{ end -}}
+
+  {{- if gt (len $lines) 4 -}}
+    {{- $size = 36 -}}
+    {{- $lineGap = 10 -}}
+  {{- else if gt (len $lines) 3 -}}
+    {{- $size = 46 -}}
+    {{- $lineGap = 14 -}}
+  {{- end -}}
+
+  {{- $og := $base.Filter
+        (images.Text (delimit $lines "\n") (dict
+          "font"        $font
+          "size"        $size
+          "color"       "#f4f4f5"
+          "x"           80
+          "y"           204
+          "linespacing" $lineGap))
+        (images.Text "detourguru’s blog" (dict
+          "font"  $font
+          "size"  24
+          "color" "#a1a1aa"
+          "x"     80
+          "y"     56))
+  -}}
+
+  {{- $imgs = $imgs | append (dict
+      "Image"        $og
+      "RelPermalink" $og.RelPermalink
+      "Permalink"    $og.Permalink) -}}
+
+{{- end -}}
+
+{{- if not $imgs -}}
+  {{- $imgParams := .Params.images -}}
+  {{- $resources := .Resources.ByType "image" -}}
+  {{/* Find featured image resources if the images parameter is empty. */}}
+  {{- if not $imgParams -}}
+    {{- $featured := $resources.GetMatch "*feature*" -}}
+    {{- if not $featured }}{{ $featured = $resources.GetMatch "{*cover*,*thumbnail*}" }}{{ end -}}
+    {{- with $featured }}
+      {{- $imgs = $imgs | append (dict
+        "Image" .
+        "RelPermalink" .RelPermalink
+        "Permalink" .Permalink) }}
+    {{- end }}
+  {{- end }}
+  {{/* Use the first one of site images as the fallback. */}}
+  {{- if and (not $imgParams) (not $imgs) }}
+    {{- with site.Params.images }}
+      {{- $imgParams = first 1 . }}
+    {{- end }}
+  {{- end }}
+  {{/* Parse page's images parameter. */}}
+  {{- range $imgParams }}
+    {{- $img := . }}
+    {{- $url := urls.Parse $img }}
+    {{- if eq $url.Scheme "" }}
+      {{/* Internal image. */}}
+      {{- with $resources.GetMatch $img -}}
+        {{/* Image resource. */}}
+        {{- $imgs = $imgs | append (dict
+          "Image" .
+          "RelPermalink" .RelPermalink
+          "Permalink" .Permalink) }}
+      {{- else }}
+        {{- $imgs = $imgs | append (dict
+          "RelPermalink" (relURL $img)
+          "Permalink" (absURL $img)
+        ) }}
+      {{- end }}
+    {{- else }}
+      {{/* External image */}}
+      {{- $imgs = $imgs | append (dict
+        "RelPermalink" $img
+        "Permalink" $img
+      ) }}
+    {{- end }}
+  {{- end }}
+{{- end -}}
+
+{{- return $imgs -}}
