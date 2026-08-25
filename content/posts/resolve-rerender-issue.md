@@ -32,6 +32,8 @@ React Query를 사용하고 있는데도 캐싱이 전혀 동작하지 않는 �
 
 게임 플레이 화면에서 다른 페이지로 이동했다가 다시 돌아올 때마다 약 29개의 API 요청이 발생했다.
 
+![페이지를 다시 방문했을 때 네트워크 탭. 하단에 29 / 74 requests가 찍혀 있다](/images/posts/resolve-rerender-issue/request-flood-29.webp)
+
 서버 데이터가 변경된 것도 아닌데 왜 매번 다시 요청할까?
 
 ### 래퍼 훅에 fallback 없음
@@ -80,6 +82,8 @@ staleTime: options?.staleTime ?? Infinity; // Infinity 여도 관련 값 업데�
 ## 뮤테이션 한 번에 API가 109건 호출되는 현상
 
 게임 생성 버튼을 누른 뒤 네트워크 탭을 보니 무려 109개의 요청이 발생했다.
+
+![게임 생성 버튼 클릭 직후 네트워크 탭. 하단에 40 / 109 requests가 찍혀 있다](/images/posts/resolve-rerender-issue/request-flood-109.webp)
 
 ### 쿼리 전역 무효화
 

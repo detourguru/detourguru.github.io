@@ -74,6 +74,13 @@ Sentry.captureMessage("first_load_timing", {
 
 이전엔 (해외에서 테스트 시) 첫 방문 시 6초 걸려 로드됐지만 실제로는 167kb밖에 못받았었는데, 이후에는 8.8MB를 받아도 0.8초만에 로드가 끝났다. 스크립트 전송량이 많아서 오래 걸린 것이 아니었단 말이다!
 
+글을 쓰면서 지금 코드베이스로 같은 비교를 다시 해봤다.
+
+![dev 서버로 홈 화면을 열었을 때 네트워크 탭 요약. 602 requests, 20.8 MB transferred, 20.8 MB resources](/images/posts/dev-server-as-production/network-summary-before.webp)
+![build 후 preview로 같은 화면을 열었을 때 네트워크 탭 요약. 23 requests, 1.1 MB transferred, 3.1 MB resources](/images/posts/dev-server-as-production/network-summary-after.webp)
+
+*로컬에서 같은 화면을 dev / build+preview로 각각 띄워 방금 잰 결과다. 코드베이스가 커져서 원래 리포트의 249개와는 수치가 다르지만 요청이 수백 개로 쪼개지느냐 하나로 뭉치느냐의 관점에서 보면 정말 큰 차이가 있다.*
+
 ## 왕복 횟수 × RTT의 함정
 
 dev 서버는 번들을 만들지 않고 소스를 모듈 단위 그대로 서빙한다. 그런데 브라우저는 파일 하나를 받아서 열어봐야 그 안에 어떤 import가 더 있는지 알 수 있고 그걸 안 다음에야 다음 파일을 요청한다. 그래서 화면 하나 띄우는데 249번을 이렇게 하나씩 물어봐야 했던 것이다. 게다가 HTTP/1.1은 6개 동시 연결 제한이 있어서 249개 요청이 병렬로 안 나가고 순차적으로 왕복이 필요했다. 그러니까... 꼬리에 꼬리를 물고 돌아온 문제였다.
