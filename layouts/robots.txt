@@ -9,9 +9,11 @@ Sitemap: {{ "sitemap.xml" | absURL }}
 
 # 1. training / bulk scraping crawlers: blocked
 # 2. on-demand fetchers (a person hands them this URL): blocked
+#    ChatGPT-User is the exception -- see note below
 # 3. AI search indexers that cite and link back: allowed on purpose
-#    OAI-SearchBot, Claude-SearchBot, PerplexityBot, YouBot -- do not add back
+#    OAI-SearchBot, ChatGPT-User, Claude-SearchBot, PerplexityBot, YouBot -- do not add back
 # Ordinary search engines stay allowed by the wildcard group above.
+# Data isn't taken for training, but answers can still cite this site.
 
 # --- 1. training / bulk scraping ---
 
@@ -79,9 +81,6 @@ User-agent: Webzio-Extended
 Disallow: /
 
 # --- 2. on-demand fetchers ---
-
-User-agent: ChatGPT-User
-Disallow: /
 
 User-agent: Claude-User
 Disallow: /
