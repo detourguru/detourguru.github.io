@@ -28,8 +28,13 @@ enableGitInfo = true
 [taxonomies]
   tag = "tags"
   # 필요할때 되살릴 것
-  # category = "categories" 
+  # category = "categories"
   series = "series"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
 
 [params]
   env = "production"
