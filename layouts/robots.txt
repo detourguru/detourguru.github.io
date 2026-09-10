@@ -8,12 +8,13 @@ Allow: /
 Sitemap: {{ "sitemap.xml" | absURL }}
 
 # 1. training / bulk scraping crawlers: blocked
-# 2. on-demand fetchers (a person hands them this URL): blocked
-#    ChatGPT-User is the exception -- see note below
+# 2. on-demand fetchers (a person hands them this URL): allowed on purpose
+#    ChatGPT-User, Claude-User, Perplexity-User, meta-externalfetcher -- do not add back
 # 3. AI search indexers that cite and link back: allowed on purpose
 #    OAI-SearchBot, ChatGPT-User, Claude-SearchBot, PerplexityBot, YouBot -- do not add back
 # Ordinary search engines stay allowed by the wildcard group above.
-# Data isn't taken for training, but answers can still cite this site.
+# Data isn't taken for training, but answers can still cite this site,
+# and a person handing an AI this URL directly can read it.
 
 # --- 1. training / bulk scraping ---
 
@@ -78,17 +79,6 @@ User-agent: PanguBot
 Disallow: /
 
 User-agent: Webzio-Extended
-Disallow: /
-
-# --- 2. on-demand fetchers ---
-
-User-agent: Claude-User
-Disallow: /
-
-User-agent: Perplexity-User
-Disallow: /
-
-User-agent: meta-externalfetcher
 Disallow: /
 
 {{- end -}}
