@@ -1,7 +1,6 @@
 baseURL = "https://detourguru.github.io/"
-locale = "ko-kr"  # Hugo 0.158+ 에서 languageCode 를 대체
 defaultContentLanguage = "ko"
-title = "detourguru의 블로그"
+defaultContentLanguageInSubdir = false
 theme = "PaperMod"
 
 # robots.txt 생성
@@ -14,16 +13,6 @@ enableGitInfo = true
 
 [services.googleAnalytics]
   ID = "G-JJHM4Z3H62"
-
-[[menu.main]]
-  name = "Home"
-  url = "/"
-  weight = 10
-
-[[menu.main]]
-  name = "About"
-  url = "/about/"
-  weight = 20
 
 [taxonomies]
   tag = "tags"
@@ -40,18 +29,8 @@ enableGitInfo = true
   env = "production"
   ShowReadingTime = true
   author = "detourguru"
-  description = "프론트엔드 개발자 detourguru의 기술 블로그. 실무에서 부딪힌 FE 문제와 그 해결 과정을 기록합니다."
-  keywords = ["프론트엔드", "React", "TypeScript", "Next.js", "Zustand", "상태 관리", "성능 최적화", "개발 블로그"]
-
   images = ["og-image.png"]
-
-  [params.profile]
-    role = "프론트엔드 개발자"
-    location = "서울"
-    activePeriod = "2025.02 ~ 현재"
-    mainStack = "React, TypeScript, Next.js"
-    email = "detourguru@gmail.com"
-    github = "https://github.com/detourguru"
+  displayFullLangName = true
 
   [params.analytics.google]
     SiteVerificationTag = ""
@@ -63,3 +42,60 @@ enableGitInfo = true
   name = "github"
   url = "https://github.com/detourguru"
   title = "GitHub"
+
+[languages]
+  [languages.ko]
+    label = "한국어"
+    locale = "ko-kr"
+    weight = 1
+    title = "detourguru의 블로그"
+
+    [languages.ko.params]
+      description = "프론트엔드 개발자 detourguru의 기술 블로그. 실무에서 부딪힌 FE 문제와 그 해결 과정을 기록합니다."
+      keywords = ["프론트엔드", "React", "TypeScript", "Next.js", "Zustand", "상태 관리", "성능 최적화", "개발 블로그"]
+
+      [languages.ko.params.profile]
+        role = "프론트엔드 개발자"
+        location = "서울"
+        activePeriod = "2025.02 ~ 현재"
+        mainStack = "React, TypeScript, Next.js"
+        email = "detourguru@gmail.com"
+        github = "https://github.com/detourguru"
+
+    [[languages.ko.menu.main]]
+      name = "Home"
+      url = "/"
+      weight = 10
+
+    [[languages.ko.menu.main]]
+      name = "About"
+      url = "/about/"
+      weight = 20
+
+  [languages.en]
+    label = "English"
+    locale = "en-us"
+    weight = 2
+    title = "detourguru's Blog"
+
+    [languages.en.params]
+      description = "Frontend developer detourguru's technical blog. Notes on FE problems encountered in production and how they got solved."
+      keywords = ["Frontend", "React", "TypeScript", "Next.js", "Zustand", "State Management", "Performance", "Dev Blog"]
+
+      [languages.en.params.profile]
+        role = "Frontend Developer"
+        location = "Seoul, Korea"
+        activePeriod = "Feb 2025 ~ Present"
+        mainStack = "React, TypeScript, Next.js"
+        email = "detourguru@gmail.com"
+        github = "https://github.com/detourguru"
+
+    [[languages.en.menu.main]]
+      name = "Home"
+      url = "/en/"
+      weight = 10
+
+    [[languages.en.menu.main]]
+      name = "About"
+      url = "/en/about/"
+      weight = 20

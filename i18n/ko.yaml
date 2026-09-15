@@ -1,0 +1,20 @@
+- id: profile_location
+  translation: "위치"
+
+- id: profile_active_period
+  translation: "활동 기간"
+
+- id: profile_main_stack
+  translation: "주요 스택"
+
+- id: profile_contact
+  translation: "연락처"
+
+- id: career_key_achievements
+  translation: "주요 성과"
+
+- id: project_placeholder_title
+  translation: "프로젝트 준비 중"
+
+- id: project_placeholder_desc
+  translation: "곧 공개될 예정입니다."

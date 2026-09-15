@@ -13,7 +13,7 @@
     <p class="career-description">{{ . }}</p>
     {{- end }}
     {{- with $job.highlights }}
-    <div class="career-subheading">주요 성과</div>
+    <div class="career-subheading">{{ i18n "career_key_achievements" }}</div>
     <ul class="career-highlights">
       {{- range . }}
       <li>{{ . }}</li>

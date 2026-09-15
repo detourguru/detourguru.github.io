@@ -22,22 +22,22 @@
   <dl class="profile-facts">
     {{- with $profile.location }}
     <div class="profile-fact">
-      <dt>위치</dt>
+      <dt>{{ i18n "profile_location" }}</dt>
       <dd>{{ . }}</dd>
     </div>
     {{- end }} {{- with $profile.activePeriod }}
     <div class="profile-fact">
-      <dt>활동 기간</dt>
+      <dt>{{ i18n "profile_active_period" }}</dt>
       <dd>{{ . }}</dd>
     </div>
     {{- end }} {{- with $profile.mainStack }}
     <div class="profile-fact">
-      <dt>주요 스택</dt>
+      <dt>{{ i18n "profile_main_stack" }}</dt>
       <dd>{{ . }}</dd>
     </div>
     {{- end }} {{- if (or $profile.github $profile.email) }}
     <div class="profile-fact">
-      <dt>연락처</dt>
+      <dt>{{ i18n "profile_contact" }}</dt>
       <dd class="profile-fact-links">
         {{- with $profile.github }}
         <a href="{{ . }}" target="_blank" rel="noopener">GitHub</a> / {{- end }}

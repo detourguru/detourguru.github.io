@@ -1,0 +1,20 @@
+- id: profile_location
+  translation: "Location"
+
+- id: profile_active_period
+  translation: "Active Since"
+
+- id: profile_main_stack
+  translation: "Main Stack"
+
+- id: profile_contact
+  translation: "Contact"
+
+- id: career_key_achievements
+  translation: "Key Achievements"
+
+- id: project_placeholder_title
+  translation: "Project coming soon"
+
+- id: project_placeholder_desc
+  translation: "Details will be added soon."
