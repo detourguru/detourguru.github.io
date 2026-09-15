@@ -1,6 +1,6 @@
 +++
 date = '2026-09-15T17:43:47+09:00'
-draft = true
+draft = false
 title = '가상 스크롤을 고치려고 가상화를 껐다'
 description = 'react-virtuoso 채팅이 바닥에서 떨어지는 두 원인과 관리자의 답, 직접 써 본 우회책 네 가지를 재현 결과와 함께 정리했다'
 tags = ["React", "디버깅", "성능 최적화"]
