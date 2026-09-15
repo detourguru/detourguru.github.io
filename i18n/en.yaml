@@ -18,3 +18,6 @@
 
 - id: project_placeholder_desc
   translation: "Details will be added soon."
+
+- id: series_label
+  translation: "Series"

@@ -18,3 +18,6 @@
 
 - id: project_placeholder_desc
   translation: "곧 공개될 예정입니다."
+
+- id: series_label
+  translation: "시리즈"

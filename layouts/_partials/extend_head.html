@@ -1,7 +1,13 @@
 {{- $allowed := slice -}}
 {{- with site.Data.tags -}}
-  {{- with .allowed -}}
-    {{- $allowed = . -}}
+  {{- if eq $.Language.Lang "en" -}}
+    {{- with .allowed_en -}}
+      {{- $allowed = . -}}
+    {{- end -}}
+  {{- else -}}
+    {{- with .allowed -}}
+      {{- $allowed = . -}}
+    {{- end -}}
   {{- end -}}
 {{- end -}}
 

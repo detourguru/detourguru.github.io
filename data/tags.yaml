@@ -16,3 +16,19 @@ allowed:
   - React
   - TypeScript
   - AI
+
+# allowed의 영문 버전. 순서와 개수를 allowed와 항상 맞춘다 (같은 인덱스 = 같은 태그의 번역).
+allowed_en:
+  # Topic
+  - Performance
+  - State Management
+  - Design
+  - Debugging
+  - Testing
+  - Productivity
+  - Accessibility
+
+  # Tech
+  - React
+  - TypeScript
+  - AI
