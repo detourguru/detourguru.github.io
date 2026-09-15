@@ -2,7 +2,7 @@
 date = '2026-07-16T23:32:36+09:00'
 draft = false
 title = '운영 서버가 npm run dev로 돌고있었다'
-description = '운영 서버가 npm run dev로 돌고 있었다. 추측 대신 계측부터 하고 진짜 운영 빌드로 옮긴 실측 Before/After.'
+description = '해외에서 첫 접속하면 스플래시가 6초씩 떠 있었는데, 운영 서버가 pm2로 npm run dev(Vite 개발 서버)를 띄우고 있었다. 번들되지 않은 모듈 249개를 하나씩 왕복하느라 RTT가 큰 환경에서만 느렸고, Sentry로 계측한 뒤 빌드 산출물 서빙으로 바꿔 128ms로 줄였다.'
 tags = ["성능 최적화", "디버깅"]
 +++
 

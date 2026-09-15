@@ -2,7 +2,7 @@
 date = '2026-07-29T19:41:48+09:00'
 draft = false
 title = 'I Cut CLS by 78%, So Why Was It Still Slow?'
-description = "I cut cold-load CLS by 78% from 0.385, but it felt just as slow. Notes on why a better score isn't the same as a faster site."
+description = "I cut cold-load CLS by 78% from 0.385, but reports that first visits were slow kept coming. The real cause was 4MB of onboarding PNGs that CLS, LCP, and bundle analysis all missed, and switching them to WebP with lazy loading cut the transfer by 87%."
 tags = ["Performance"]
 +++
 

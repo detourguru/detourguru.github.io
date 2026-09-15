@@ -2,7 +2,7 @@
 date = '2026-07-14T21:48:45+09:00'
 draft = false
 title = 'Who Should Own the Form?'
-description = 'Where to call useForm() turned out to be a question of form-state ownership. A walk through comparing page-level, Layout-level, and a global store.'
+description = "The save button lived in the header, so it couldn't reach a form created inside the page. I moved useForm() up to the Layout and had each page declare only its schema in the route handle. The form only needed to be shared within one screen, so I used FormProvider (Context) instead of a global store, at the cost of handling reset on every route change."
 tags = ["React", "State Management", "Design"]
 series = ['Form Design Troubleshooting']
 +++

@@ -2,7 +2,7 @@
 date = '2026-07-10T00:14:11+09:00'
 draft = false
 title = '중복 실행 방지 락은 진입 시점에 걸자'
-description = 'SSE 중복 연결, SQLite 배치 재진입, 채팅 중복 전송. 도메인은 달랐지만 원인은 같았다. 락을 진입 시점에 건 기록.'
+description = 'SSE 중복 연결, SQLite 배치 insert 재진입, 채팅 더블클릭 중복 전송은 모두 상태를 확인하고 바꾸는 사이에 await가 끼어 생긴 race condition이었다. await보다 먼저, 함수에 들어오자마자 ref나 플래그로 락을 걸어 셋 다 막았다.'
 tags = ["디버깅", "React"]
 +++
 

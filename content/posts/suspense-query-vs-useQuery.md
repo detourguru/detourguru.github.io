@@ -2,7 +2,7 @@
 date = '2026-07-04T23:48:43+09:00'
 draft = false
 title = 'useSuspenseQuery vs useQuery 뭘 언제 써야할까?'
-description = 'useSuspenseQuery를 골랐다가 enabled가 없어 막혔고 직렬 워터폴까지 만났다. 두 훅을 이원화한 선택 기준.'
+description = 'useSuspenseQuery는 enabled 옵션이 없어서 URL param이 준비되기 전에 빈 요청을 보냈고, 한 컴포넌트에서 여러 번 부르면 직렬 워터폴이 생겼다. param이 늦게 오는 쿼리는 useQuery와 enabled로 분리하고, 워터폴은 진입 시 prefetchQuery로 병렬 캐싱해 요청을 22건에서 10건으로 줄였다.'
 tags = ["React", "성능 최적화"]
 +++
 

@@ -2,7 +2,7 @@
 date = '2026-07-05T23:50:40+09:00'
 draft = false
 title = 'React Query 최적화 잘못하면 생기는 일'
-description = 'React Query로 갈아탔더니 페이지 이동마다 API가 29개씩 나갔다. 래퍼 훅 fallback과 전역 무효화를 잡은 기록.'
+description = 'React Query로 옮긴 뒤 페이지를 다시 열 때마다 API 29건, 게임 생성 한 번에 109건이 나갔다. 커스텀 래퍼 훅이 staleTime을 undefined로 덮어써 전역 설정이 무시됐고, 인자 없는 invalidateQueries()가 모든 쿼리를 다시 부르고 있었다. 쿼리 키를 지정해 무효화하자 109건이 2건으로 줄었다.'
 tags = ["React", "성능 최적화", "테스트"]
 +++
 

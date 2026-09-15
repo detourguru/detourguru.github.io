@@ -2,7 +2,7 @@
 date = '2026-08-21T00:15:11+09:00'
 draft = false
 title = 'MCP가 도대체 뭐길래 다들 MCP MCP'
-description = 'MCP를 AI용 API 정도로만 알고 쓰다가 백엔드의 MCP 서버 코드를 직접 뜯어봤다. 일반 API와 무엇이 다른지 정리했다.'
+description = 'MCP를 AI용 API 정도로만 알다가 우리 백엔드의 MCP 서버 코드를 직접 읽어봤다. JSON-RPC 2.0 위에서 tools/list와 tools/call로 도구를 노출하고, 생성 규칙을 시스템 프롬프트 대신 JSON Schema로 강제한다는 점이 기존 LLM API 호출 방식과 가장 큰 차이였다.'
 tags = ["AI", "설계"]
 +++
 

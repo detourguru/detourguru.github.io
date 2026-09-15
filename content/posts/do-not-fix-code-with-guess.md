@@ -2,7 +2,7 @@
 date = '2026-07-07T00:12:05+09:00'
 draft = false
 title = 'try-catch가 항상 정답이 아닌 이유'
-description = 'try-catch로 덮은 TypeError는 사라지지 않고 더 찾기 어려운 곳에서 다시 드러난다. 감으로 고치면 안 되는 이유.'
+description = '간헐적으로 나던 undefined TypeError를 try-catch로 덮어뒀는데, 원인은 fetch가 404를 reject하지 않고 공통 API 래퍼도 실패를 throw하지 않아 빈 데이터가 컴포넌트까지 내려온 것이었다. 404 응답을 select에서 null로 바꿔 빈 상태를 명시적으로 처리했다.'
 tags = ["디버깅", "React"]
 +++
 

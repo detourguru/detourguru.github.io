@@ -2,7 +2,7 @@
 date = '2026-07-10T00:14:11+09:00'
 draft = false
 title = 'Lock at the Entry Point to Stop Duplicate Runs'
-description = 'A duplicate SSE connection, a re-entrant SQLite batch, and a duplicate chat message send — different domains, same root cause. Notes on locking right at the entry point.'
+description = "A duplicate SSE connection, a re-entrant SQLite batch insert, and a double-clicked chat message all came from the same race condition: an await sitting between checking state and changing it. Taking a lock with a ref or flag at function entry, before the await, fixed all three."
 tags = ["Debugging", "React"]
 +++
 

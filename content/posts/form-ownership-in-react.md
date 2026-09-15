@@ -2,7 +2,7 @@
 date = '2026-07-14T21:48:45+09:00'
 draft = false
 title = '폼은 누가 가지고 있어야 할까?'
-description = 'useForm()을 어디서 호출할지는 결국 폼 상태의 소유권 문제였다. 페이지·Layout·전역 스토어를 비교한 과정.'
+description = '저장 버튼이 헤더에 있어서 페이지에서 만든 폼에 접근할 수 없었다. useForm()을 Layout으로 올리고 각 페이지는 라우트 handle에 스키마만 선언하게 했다. 폼은 한 화면 안에서만 공유하면 돼서 전역 스토어 대신 FormProvider(Context)를 썼고, 대신 라우트가 바뀔 때마다 reset을 챙겨야 했다.'
 tags = ["React", "상태 관리", "설계"]
 series = ['폼 설계 삽질기']
 +++

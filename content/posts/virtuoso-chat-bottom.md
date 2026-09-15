@@ -2,7 +2,7 @@
 date = '2026-09-15T17:43:47+09:00'
 draft = false
 title = '가상 스크롤을 고치려고 가상화를 껐다'
-description = 'react-virtuoso 채팅이 바닥에서 떨어지는 두 원인과 관리자의 답, 직접 써 본 우회책 네 가지를 재현 결과와 함께 정리했다'
+description = 'react-virtuoso 채팅에서 새 메시지가 바닥에 붙지 않고, 가만히 있어도 스크롤이 흔들렸다. 추정 높이로 목표 위치를 계산하는 followOutput과 재마운트 때의 재측정이 원인이었고, 관리자가 권한 해법과 직접 써 본 우회책 네 가지, TanStack Virtual 전환을 재현 결과로 비교했다.'
 tags = ["React", "디버깅", "성능 최적화"]
 +++
 

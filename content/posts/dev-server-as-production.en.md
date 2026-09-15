@@ -2,7 +2,7 @@
 date = '2026-07-16T23:32:36+09:00'
 draft = false
 title = 'The Production Server Was Running on npm run dev'
-description = "The production server was running on npm run dev. Before fixing anything, I instrumented it, then measured the real before/after of moving to an actual production build."
+description = "First visits from overseas sat on the splash screen for 6 seconds because pm2 was running the production server with npm run dev, the Vite dev server. Fetching 249 unbundled modules one round trip at a time only hurt on high-RTT networks. After instrumenting it with Sentry, serving the real build brought it down to 128ms."
 tags = ["Performance", "Debugging"]
 +++
 

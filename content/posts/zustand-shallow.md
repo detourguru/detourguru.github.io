@@ -2,7 +2,7 @@
 date = '2026-07-02T00:19:01+09:00'
 draft = false
 title = 'Zustand에서 불필요한 리렌더를 막는 법'
-description = '채팅 하나 추가될 때마다 헤더·푸터·사이드바까지 리렌더됐다. selector와 useShallow로 구독 범위를 좁힌 기록.'
+description = '채팅 메시지 하나가 추가될 때마다 헤더와 사이드바까지 한 화면이 30번 리렌더됐다. selector 없이 useChatStore()를 호출해 store 전체를 구독하고 있었다. selector와 useShallow로 구독 범위를 좁히고 파생 계산을 selector 밖으로 빼서 3번으로 줄였다.'
 tags = ["React", "상태 관리", "성능 최적화"]
 +++
 

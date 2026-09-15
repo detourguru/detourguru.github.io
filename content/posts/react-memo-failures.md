@@ -2,7 +2,7 @@
 date = '2026-07-01T23:33:46+09:00'
 draft = false
 title = 'React.memo를 붙였는데 리렌더가 안 줄었다'
-description = 'memo를 붙여도 리렌더 횟수는 그대로였다. 비교를 깨트리는 인라인 객체·children·context, 그리고 진짜 범인이었던 prop 하나.'
+description = '채팅 메시지 컴포넌트에 React.memo를 붙여도 리렌더가 줄지 않았다. 인라인 객체·children·context가 memo 비교를 깨는 경우를 확인하고, 실제 원인이던 전체 메시지 개수 prop을 isLastMessage boolean으로 바꿔 해결했다.'
 tags = ["React", "성능 최적화"]
 +++
 

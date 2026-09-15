@@ -2,7 +2,7 @@
 date = '2026-09-15T17:43:47+09:00'
 draft = false
 title = 'I Turned Off Virtualization to Fix Virtual Scrolling'
-description = "Two root causes behind react-virtuoso chat drifting off the bottom, the maintainer's answer, and four workarounds I tried myself, with reproduction results."
+description = "In a react-virtuoso chat, new messages stopped short of the bottom and the list jittered even when nobody was scrolling. The causes were followOutput aiming at a position computed from estimated heights, and re-measurement on remount. I compared the maintainer's suggestions, four workarounds I tried, and switching to TanStack Virtual, using reproduction results."
 tags = ["React", "Debugging", "Performance"]
 series = ['Chat Virtual Scroll Troubleshooting']
 +++

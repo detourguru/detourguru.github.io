@@ -2,7 +2,7 @@
 date = '2026-08-20T18:11:03+09:00'
 draft = false
 title = '타입 선언 4개를 배열 하나로 합치기'
-description = '요청과 응답의 키가 다른 외부 API 때문에 타입 선언이 4개로 늘었다. 배열 하나에서 리터럴 타입을 뽑아낸 과정.'
+description = '요청은 코드로, 응답은 이름으로 오는 KOPIS API 때문에 코드 유니온, 이름 유니온, 옵션 배열, 매핑 객체를 따로 선언하고 있었다. TypeScript 5.0의 const 타입 파라미터와 infer로 배열 하나에서 네 가지를 모두 뽑아내는 createCodeTable 헬퍼를 만들었다.'
 tags = ["TypeScript", "설계"]
 +++
 

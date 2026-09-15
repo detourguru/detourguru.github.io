@@ -2,7 +2,7 @@
 date = '2026-07-08T00:13:18+09:00'
 draft = false
 title = 'zustand store의 책임을 분리하는 기준을 뭘로 잡을까?'
-description = '플레이 화면 상태를 Zustand store 하나에 몰아넣었다가 쪼갠 이야기. 도메인 기준으로 나눈 과정을 정리했다.'
+description = '플레이 화면 상태를 Zustand store 하나에 몰아넣었더니 800줄 가까이 됐고, step을 바꾸는 액션이 채팅 상태까지 건드리고 있었다. 변경 주체와 생명주기를 기준으로 도메인별 store로 나누고, store끼리 엮이는 동작은 페이지 훅에서 조합하게 했다.'
 tags = ["React", "상태 관리", "설계"]
 +++
 

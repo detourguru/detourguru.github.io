@@ -2,7 +2,7 @@
 date = '2026-07-12T18:47:15+09:00'
 draft = false
 title = 'Form, 내가 만들기 vs 남이 만든 거 쓰기'
-description = '폼 상태를 전역 스토어에 넣었다가 겪은 문제와 React Hook Form + Zod로 옮기며 세운 도입 기준.'
+description = '폼 값을 전역 스토어로 관리하다가 필수값 검증이 들어오면서 에러·dirty 상태까지 스토어에 쌓이고 리렌더가 늘었다. 엔티티별 form store 13개를 React Hook Form과 Zod 스키마로 옮기고, 폼 라이브러리가 필요한 시점을 필드 수와 검증 복잡도로 나눠 정했다.'
 tags = ["React", "상태 관리", "설계"]
 series = ['폼 설계 삽질기']
 +++
