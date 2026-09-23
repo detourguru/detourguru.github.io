@@ -13,6 +13,33 @@
 - id: career_key_achievements
   translation: "Key Achievements"
 
+- id: career_domain
+  translation: "Domain"
+
+- id: career_stack
+  translation: "Stack"
+
+- id: career_team
+  translation: "Team"
+
+- id: career_featured
+  translation: "Featured"
+
+- id: career_other
+  translation: "Other cases"
+
+- id: career_problem
+  translation: "Problem"
+
+- id: career_decision
+  translation: "Decision"
+
+- id: career_impl
+  translation: "Implementation"
+
+- id: career_result
+  translation: "Result"
+
 - id: project_placeholder_title
   translation: "Project coming soon"
 

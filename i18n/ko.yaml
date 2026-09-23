@@ -13,6 +13,33 @@
 - id: career_key_achievements
   translation: "주요 성과"
 
+- id: career_domain
+  translation: "도메인"
+
+- id: career_stack
+  translation: "스택"
+
+- id: career_team
+  translation: "소속"
+
+- id: career_featured
+  translation: "대표 사례"
+
+- id: career_other
+  translation: "기타 사례"
+
+- id: career_problem
+  translation: "문제"
+
+- id: career_decision
+  translation: "판단"
+
+- id: career_impl
+  translation: "구현"
+
+- id: career_result
+  translation: "결과"
+
 - id: project_placeholder_title
   translation: "프로젝트 준비 중"
 
