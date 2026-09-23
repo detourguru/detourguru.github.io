@@ -6,53 +6,19 @@
       <h3 class="career-company">{{ $job.company }}</h3>
       <span class="career-period">{{ $job.period }}</span>
     </div>
-    <dl class="career-meta">
-      {{- with $job.domain }}<dt>{{ i18n "career_domain" }}</dt><dd>{{ . }}</dd>{{ end }}
-      {{- with $job.stack }}<dt>{{ i18n "career_stack" }}</dt><dd>{{ . }}</dd>{{ end }}
-      {{- with $job.team }}<dt>{{ i18n "career_team" }}</dt><dd>{{ . }}</dd>{{ end }}
-    </dl>
-    {{- range $job.areas }}
-    <div class="career-area">
-      {{- with .title }}
-      <h4 class="career-area-title">{{ . }}</h4>
+    {{- with $job.service }}
+    <div class="career-service">{{ . }}</div>
+    {{- end }}
+    {{- with $job.summary }}
+    <p class="career-description">{{ . }}</p>
+    {{- end }}
+    {{- with $job.highlights }}
+    <div class="career-subheading">{{ i18n "career_key_achievements" }}</div>
+    <ul class="career-highlights">
+      {{- range . }}
+      <li>{{ . }}</li>
       {{- end }}
-      {{- if or .meta .scale .period }}
-      <div class="career-area-meta">
-        {{- with .meta }}<span>{{ . }}</span>{{ end }}
-        {{- with .scale }}<span>{{ . }}</span>{{ end }}
-        {{- with .period }}<span class="career-period">{{ . }}</span>{{ end }}
-      </div>
-      {{- end }}
-      {{- with .featured }}
-      <div class="career-case-title">
-        <span class="career-tag-featured">{{ i18n "career_featured" }}</span>
-        <span>{{ .title }}</span>
-        {{- with .period }}<span class="career-period">{{ . }}</span>{{ end }}
-      </div>
-      <dl class="career-case">
-        {{- with .problem }}<dt>{{ i18n "career_problem" }}</dt><dd>{{ . | markdownify }}</dd>{{ end }}
-        {{- with .decision }}<dt>{{ i18n "career_decision" }}</dt><dd>{{ . | markdownify }}</dd>{{ end }}
-        {{- with .impl }}
-        <dt>{{ i18n "career_impl" }}</dt>
-        <dd><ul class="career-highlights">{{ range . }}<li>{{ . | markdownify }}</li>{{ end }}</ul></dd>
-        {{- end }}
-        {{- with .result }}<dt>{{ i18n "career_result" }}</dt><dd>{{ . | markdownify }}</dd>{{ end }}
-      </dl>
-      {{- end }}
-      {{- with .cases }}
-      <div class="career-case-title">
-        <span class="career-tag-other">{{ i18n "career_other" }}</span>
-      </div>
-      <ul class="career-cases">
-        {{- range . }}
-        <li>
-          <div class="career-cases-problem">{{ .problem | markdownify }}</div>
-          <div class="career-cases-solution">{{ .solution | markdownify }}</div>
-        </li>
-        {{- end }}
-      </ul>
-      {{- end }}
-    </div>
+    </ul>
     {{- end }}
   </div>
   {{- end }}

@@ -16,6 +16,14 @@
   transition: opacity 0.2s ease;
 }
 
+.career-card:not(.career-card-current) {
+  opacity: 0.68;
+}
+
+.career-card:not(.career-card-current):hover {
+  opacity: 1;
+}
+
 .career-card-current {
   background: var(--tertiary);
 }
@@ -83,122 +91,4 @@
   border-radius: var(--radius);
   background: var(--tertiary);
   color: var(--primary);
-}
-
-.career-meta,
-.career-case {
-  display: grid;
-  grid-template-columns: 4.5rem 1fr;
-  gap: 0.35rem 0.9rem;
-  margin: 0.8rem 0 0;
-  font-size: 0.88rem;
-  line-height: 1.6;
-}
-
-.career-meta dt,
-.career-case dt {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--secondary);
-  padding-top: 0.15rem;
-}
-
-.career-meta dd,
-.career-case dd {
-  margin: 0;
-  color: var(--primary);
-}
-
-.career-case dd p {
-  margin: 0;
-}
-
-.career-area {
-  margin-top: 1.6rem;
-  padding-top: 1.2rem;
-  border-top: 1px solid var(--border);
-}
-
-.career-area-title {
-  margin: 0;
-  font-size: 1.05rem;
-  font-weight: 700;
-}
-
-.career-area-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.2rem 0.8rem;
-  margin-top: 0.25rem;
-  font-size: 0.8rem;
-  color: var(--secondary);
-}
-
-.career-case-title {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.3rem 0.6rem;
-  margin: 1rem 0 0;
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-
-.career-tag-featured,
-.career-tag-other {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  padding: 0.1rem 0.45rem;
-  border-radius: 4px;
-  background: var(--code-bg);
-  color: var(--secondary);
-}
-
-.career-tag-featured {
-  color: var(--primary);
-  border: 1px solid var(--border);
-}
-
-.career-cases {
-  margin: 0.5rem 0 0;
-  padding: 0;
-  list-style: none;
-  font-size: 0.88rem;
-  line-height: 1.6;
-}
-
-.career-cases li {
-  padding: 0.55rem 0;
-  border-bottom: 1px dashed var(--border);
-}
-
-.career-cases li:last-child {
-  border-bottom: 0;
-}
-
-.career-cases-problem {
-  font-weight: 600;
-  color: var(--primary);
-}
-
-.career-cases-solution {
-  color: var(--secondary);
-}
-
-.career-cases p {
-  margin: 0;
-}
-
-@media (max-width: 600px) {
-  .career-meta,
-  .career-case {
-    grid-template-columns: 1fr;
-    gap: 0.1rem;
-  }
-
-  .career-meta dd,
-  .career-case dd {
-    margin-bottom: 0.5rem;
-  }
 }
