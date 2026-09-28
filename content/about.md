@@ -8,6 +8,14 @@ description = '''안녕하세요, 문제의 원인을 추적하고 해결하는 
 개발 공부와 실무, 개인 프로젝트에서 마주한 문제와 해결 과정을 기록합니다. 추측 대신 측정으로 원인을 좁히고, 발견한 원인은 구조 개선까지 파고듭니다.'''
 +++
 
+## 대표글
+
+- [운영 서버가 npm run dev로 돌고있었다](/posts/dev-server-as-production/)
+- [가상 스크롤을 고치려고 가상화를 껐다](/posts/virtuoso-chat-bottom/)
+- [앱 테마가 10개일때 색각 이상을 어떻게 대응해야 할까?](/posts/theme-contrast-accessibility/)
+- [zustand store의 책임을 분리하는 기준을 뭘로 잡을까?](/posts/split-huge-store/)
+- [사수 없는 프론트엔드 개발자가 AI와 함께 일해온 방법](/posts/solo-fe-team-with-ai/)
+
 ## 프로젝트
 
 {{< projects >}}

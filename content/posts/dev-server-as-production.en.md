@@ -72,7 +72,7 @@ Partly I was curious how much this would actually improve once I changed the ser
 | Transfer size      | 167KB ~ **8.8MB** (uncompressed)                       | 612KB (gzip)             |
 | TTFB               | 9ms                                                     | 6ms                       |
 
-Before, on that first overseas test, the page took 6 seconds to load even though it only received 167KB. Afterward, it loaded in 0.8 seconds even while pulling down 8.8MB. So the long load time had nothing to do with how much data was being transferred!
+Before, on that first overseas test, the page took 6 seconds to load even though it only received 167KB. Yet on a nearby repeat visit, still served by the same dev server, it loaded in 0.8 seconds even while pulling down 8.8MB. So the long load time had nothing to do with how much data was being transferred!
 
 While writing this post, I reran the same comparison on the current codebase.
 

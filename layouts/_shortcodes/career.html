@@ -6,8 +6,8 @@
       <h3 class="career-company">{{ $job.company }}</h3>
       <span class="career-period">{{ $job.period }}</span>
     </div>
-    {{- with $job.service }}
-    <div class="career-service">{{ . }}</div>
+    {{- if or $job.service $job.role }}
+    <div class="career-service">{{ $job.service }}{{ if and $job.service $job.role }} · {{ end }}{{ $job.role }}</div>
     {{- end }}
     {{- with $job.summary }}
     <p class="career-description">{{ . }}</p>
