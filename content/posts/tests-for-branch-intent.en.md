@@ -8,7 +8,7 @@ tags = ["Testing"]
 
 Fixing one feature and watching a seemingly unrelated screen break is probably something every developer has been through at least once. And when you develop alone, there's nobody to tell you, so users often find it first.
 
-Hoejeonmun, a service I built, was exactly this case. You upload a casting board image, and AI reads it and organizes the performers by date. The AI's output can't be trusted, so the code filters it once more. Because an LLM is parsing images that differ for every production company and every show, there were more errors than I expected, and a matching number of user reports. So conditions kept piling up: is the date format valid, is it within the show's run, does the printed weekday match the actual date. That validation logic grew to nearly 880 lines in a single file.
+Hoejeonmun, a service I built, was exactly this case. You upload a casting board image, and AI reads it and organizes the performers by date. The AI's output can't be trusted, so the code filters it once more. Every time an error report came in, another condition got added, and that validation logic grew to nearly 880 lines in a single file.
 
 But with no tests, every time I added a branch, the only way to check that the existing branches still did what they were meant to do was to test the feature by hand. The biggest problem was that the manual testing surface was wide, so when a bug I'd already fixed came back because of another change, I had no way of knowing.
 
