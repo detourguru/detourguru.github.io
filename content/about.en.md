@@ -11,6 +11,8 @@ description = 'I am a frontend developer with about a year and eight months of e
 
 - [The Production Server Was Running on npm run dev](/en/posts/dev-server-as-production/): measuring first instead of guessing, then moving to a production build, with real before/after numbers
 - [I Turned Off Virtualization to Fix Virtual Scrolling](/en/posts/virtuoso-chat-bottom/): why a chat list wouldn't stick to the bottom, and why I combined workarounds instead of switching libraries
+- [Laying Out Multi-Day Events One Week at a Time](/en/posts/calendar-event-lanes/): why per-day stacking made event bars overlap showtimes, and how assigning lanes per week fixed it, with regression tests
+- [Writing Tests Surfaces Intent the Code Never Stated](/en/posts/tests-for-branch-intent/): covering every branch and every past bug in a solo project, the hidden bugs that turned up, and test titles as a record of decisions
 
 ## Projects
 

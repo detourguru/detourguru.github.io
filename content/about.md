@@ -12,9 +12,9 @@ description = '''안녕하세요, 문제의 원인을 추적하고 해결하는 
 
 - [운영 서버가 npm run dev로 돌고있었다](/posts/dev-server-as-production/)
 - [가상 스크롤을 고치려고 가상화를 껐다](/posts/virtuoso-chat-bottom/)
+- [여러 날짜를 차지하는 이벤트의 레이아웃을 주 단위로 설계하기](/posts/calendar-event-lanes/)
 - [앱 테마가 10개일때 색각 이상을 어떻게 대응해야 할까?](/posts/theme-contrast-accessibility/)
-- [zustand store의 책임을 분리하는 기준을 뭘로 잡을까?](/posts/split-huge-store/)
-- [사수 없는 프론트엔드 개발자가 AI와 함께 일해온 방법](/posts/solo-fe-team-with-ai/)
+- [테스트코드를 붙이다보면 코드에 없던 의도가 보이기 시작한다](/posts/tests-for-branch-intent/)
 
 ## 프로젝트
 

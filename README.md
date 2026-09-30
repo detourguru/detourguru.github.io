@@ -15,9 +15,9 @@
 
 - **[운영 서버가 npm run dev로 돌고 있었다](https://detourguru.github.io/posts/dev-server-as-production/)**
 - **[가상 스크롤을 고치려고 가상화를 껐다](https://detourguru.github.io/posts/virtuoso-chat-bottom/)**
-- **[앱 테마가 10개일때 색각 이상을 어떻게 대응해야 할까?](https://detourguru.github.io/posts/theme-contrast-accessibility/)** 
-- **[zustand store의 책임을 분리하는 기준을 뭘로 잡을까?](https://detourguru.github.io/posts/split-huge-store/)**
-- **[사수 없는 프론트엔드 개발자가 AI와 함께 일해온 방법](https://detourguru.github.io/posts/solo-fe-team-with-ai/)**
+- **[여러 날짜를 차지하는 이벤트의 레이아웃을 주 단위로 설계하기](https://detourguru.github.io/posts/calendar-event-lanes/)**
+- **[앱 테마가 10개일때 색각 이상을 어떻게 대응해야 할까?](https://detourguru.github.io/posts/theme-contrast-accessibility/)**
+- **[테스트코드를 붙이다보면 코드에 없던 의도가 보이기 시작한다](https://detourguru.github.io/posts/tests-for-branch-intent/)**
 
 ## Built with
 
