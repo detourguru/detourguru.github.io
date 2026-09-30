@@ -72,10 +72,3 @@ After that I switched the images to webp and applied lazy loading. Measuring the
 ## What I Learned
 
 CLS measures stability, LCP measures speed, and bundle size only measures JS weight. Before fixing a metric, I should have checked what it actually covers. I also learned not to feel safe just because every Lighthouse metric is green — when something feels slow, you need to check the network transfer list too.
-
-## References
-
-- [web.dev — Cumulative Layout Shift](https://web.dev/articles/cls)
-- [web.dev — Optimize CLS](https://web.dev/articles/optimize-cls)
-- [web.dev — Largest Contentful Paint](https://web.dev/articles/lcp)
-- [MDN — `loading="lazy"`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading)

@@ -5,6 +5,8 @@
 # Hugo cache
 /.hugo_build.lock
 
+/images
+
 # Build output
 /dist/
 

@@ -72,10 +72,3 @@ tags = ["성능 최적화"]
 ## 배운점
 
 CLS는 안정성, LCP는 속도, 번들 크기는 JS 용량만 잰다. 지표를 고치기 전에 그 지표가 뭘 처리하는지 부터 확인했어야했다. 그리고 라이트하우스 지표가 다 초록색이라고 안심하지 말고 느린 현상이 있을때는 전송량 목록을 같이 확인해봐야한다는 것도 알게되었다.
-
-## 참고 자료
-
-- [web.dev — Cumulative Layout Shift](https://web.dev/articles/cls)
-- [web.dev — Optimize CLS](https://web.dev/articles/optimize-cls)
-- [web.dev — Largest Contentful Paint](https://web.dev/articles/lcp)
-- [MDN — `loading="lazy"`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading)
