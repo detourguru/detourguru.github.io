@@ -13,6 +13,9 @@
 - id: career_key_achievements
   translation: "Key Achievements"
 
+- id: diagram_toggle
+  translation: "View system architecture"
+
 - id: project_placeholder_title
   translation: "Project coming soon"
 

@@ -1,0 +1,19 @@
+{{- if .Store.Get "hasMermaid" }}
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+
+  mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "strict" });
+
+  const blocks = [...document.querySelectorAll(".post-content .mermaid")];
+  const visible = blocks.filter((el) => !el.closest("details:not([open])"));
+  if (visible.length) await mermaid.run({ nodes: visible });
+
+  blocks
+    .filter((el) => !visible.includes(el))
+    .forEach((el) => {
+      el.closest("details").addEventListener("toggle", (e) => e.target.open && mermaid.run({ nodes: [el] }), {
+        once: true,
+      });
+    });
+</script>
+{{- end }}

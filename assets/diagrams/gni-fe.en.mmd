@@ -1,0 +1,60 @@
+flowchart TD
+    User["User<br/>Browser, Android app"]
+
+    subgraph FE["Frontend (my scope)"]
+        direction TB
+        Shell["React SPA (Vite + TypeScript)<br/>Capacitor WebView"]
+
+        subgraph Screens["Screens"]
+            direction LR
+            Editor["Game editor<br/>Split out of the mobile initial bundle"]
+            Platform["Platform<br/>Browse, account"]
+            InGame["In-game<br/>Live chat and scene effects"]
+        end
+
+        subgraph Data["Data layer"]
+            direction LR
+            Cache["Server-state cache<br/>Shared data prefetch, reused across screens"]
+            Queue["Socket event queue<br/>Server-side ordering, wait-for-completion serialization"]
+            SQLite[("Local SQLite<br/>Chat history")]
+        end
+
+        Shell --> Editor
+        Shell --> Platform
+        Shell --> InGame
+        Editor --> Cache
+        Platform --> Cache
+        InGame --> Cache
+        InGame --> Queue
+        InGame --- SQLite
+    end
+
+    subgraph Quality["Quality and delivery"]
+        direction LR
+        CI["GitHub Actions CI<br/>lint, typecheck, unit test"]
+        E2E["Playwright persona QA<br/>Browser + Android WebView (CDP)"]
+    end
+
+    API["REST API server"]
+    WS["WebSocket server"]
+    FCM["Firebase Cloud Messaging"]
+    Sentry["Sentry"]
+
+    User --> Shell
+    Editor -->|"AI generation request (SSE streaming)"| API
+    Cache -->|"REST"| API
+    Queue <-->|"Gameplay, DMs in real time"| WS
+    WS -->|"Push notifications"| FCM
+    FCM -.->|"Push delivery"| Shell
+    Shell -.->|"Error tracking"| Sentry
+
+    CI -.->|"PR checks"| Shell
+    E2E -.->|"Automated user-journey checks"| Shell
+
+    classDef external fill:#f5f5f5,stroke:#bbb,color:#888
+    class API,WS,FCM,Sentry external
+
+    style FE fill:#eef6ff,stroke:#7aa7d9,color:#1f2937
+    style Quality fill:#f3f9ee,stroke:#8cb86a,color:#1f2937
+    style Screens fill:#ffffff,stroke:#b9cfe8,color:#1f2937
+    style Data fill:#ffffff,stroke:#b9cfe8,color:#1f2937

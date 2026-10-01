@@ -13,6 +13,9 @@
 - id: career_key_achievements
   translation: "주요 성과"
 
+- id: diagram_toggle
+  translation: "시스템 구성 보기"
+
 - id: project_placeholder_title
   translation: "프로젝트 준비 중"
 

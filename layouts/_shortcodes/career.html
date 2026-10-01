@@ -12,6 +12,9 @@
     {{- with $job.summary }}
     <p class="career-description">{{ . }}</p>
     {{- end }}
+    {{- with $job.diagram }}
+    {{- partial "mermaid_diagram.html" (dict "page" $.Page "name" . "summary" (i18n "diagram_toggle")) }}
+    {{- end }}
     {{- with $job.highlights }}
     <div class="career-subheading">{{ i18n "career_key_achievements" }}</div>
     <ul class="career-highlights">

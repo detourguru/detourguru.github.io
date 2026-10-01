@@ -3,3 +3,30 @@
     line-height: 1.6;
     color: var(--secondary);
 }
+
+.post-content .mermaid {
+    margin-bottom: var(--content-gap);
+    overflow-x: auto;
+    text-align: center;
+}
+
+.diagram-toggle {
+    margin-top: 0.9rem;
+}
+
+.diagram-toggle summary {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--secondary);
+    cursor: pointer;
+}
+
+.diagram-toggle .mermaid {
+    margin: 0.75rem 0 0;
+}
+
+[data-theme="dark"] .post-content .mermaid {
+    padding: 16px;
+    background: #fafafa;
+    border-radius: var(--radius);
+}

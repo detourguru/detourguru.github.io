@@ -1,0 +1,10 @@
+{{- $page := .page -}}
+{{- $src := or (resources.Get (printf "diagrams/%s.%s.mmd" .name $page.Language.Lang)) (resources.Get (printf "diagrams/%s.ko.mmd" .name)) -}}
+{{- if not $src -}}
+  {{- errorf "다이어그램: assets/diagrams/%s.ko.mmd 를 찾을 수 없습니다." .name -}}
+{{- end -}}
+<details class="diagram-toggle">
+  <summary>{{ .summary }}</summary>
+  <div class="mermaid">{{ $src.Content | htmlEscape | safeHTML }}</div>
+</details>
+{{- $page.Store.Set "hasMermaid" true -}}
