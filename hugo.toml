@@ -48,7 +48,7 @@ enableGitInfo = true
     label = "한국어"
     locale = "ko-kr"
     weight = 1
-    title = "detourguru의 블로그"
+    title = "detourguru의 블로그 | FE 개발자"
 
     [languages.ko.params]
       description = "프론트엔드 개발자 detourguru의 기술 블로그. 실무에서 부딪힌 FE 문제와 그 해결 과정을 기록합니다."
