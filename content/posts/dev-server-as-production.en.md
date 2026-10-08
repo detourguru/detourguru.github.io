@@ -67,7 +67,7 @@ Partly I was curious how much this would actually improve once I changed the ser
 
 |                   | Before (dev serving)                                  | After (static serving) |
 | ----------------- | ------------------------------------------------------ | ----------------------- |
-| Splash duration    | **5,972ms** (first visit, cold) / 810ms (repeat visit, nearby) | **128ms**        |
+| Splash duration    | **810ms** (first visit, cold) / 810ms (repeat visit, nearby) | **128ms**        |
 | Script requests    | **249**                                                | **1**                    |
 | Transfer size      | 167KB ~ **8.8MB** (uncompressed)                       | 612KB (gzip)             |
 | TTFB               | 9ms                                                     | 6ms                       |
