@@ -59,23 +59,19 @@ return useReactQuery({
 
 더 큰 문제는 프로젝트의 `QueryClient`에는 이미 전역 staleTime을 10분으로 설정해두었는데 래퍼 훅에서 옵션을 덮어쓰면서 전역 설정을 제대로 활용하지 못하고 있었다는 점이다.
 
-### 래퍼 훅에 fallback 추가
+### 래퍼 훅에서 staleTime 덮어쓰기 빼기
 
-가장 안전한 방법은 래퍼 훅에서 기본값을 강제하지 않고 전역 설정을 그대로 사용하도록 만드는 것이었지만
+그래서 래퍼 훅에서 staleTime을 따로 지정하지 않고 `options`만 그대로 넘기도록 고쳤다.
 
 ```ts
 return useReactQuery({
   queryKey,
   queryFn: () => handleData<T>("GET", key, param),
-  ...options,
+  ...options, // staleTime을 안 넘기면 전역 설정을 따른다
 });
 ```
 
-개별적으로 options을 받을 수도 있게 하려고 이렇게 fallback을 추가해줬다.
-
-```ts
-staleTime: options?.staleTime ?? Infinity; // Infinity 여도 관련 값 업데이트 되면서 invalidates 처리로 리페치됨
-```
+이렇게 하면 `options`로 staleTime을 넘긴 쿼리는 그 값을 쓰고, 넘기지 않은 쿼리는 `QueryClient`에 설정해둔 10분을 그대로 따르게 된다.
 
 결과적으로 페이지를 다시 방문해도 불필요한 API 요청이 발생하지 않게 되었다.
 
