@@ -1,0 +1,198 @@
+:root {
+    --edge: var(--secondary);
+    --exit: var(--secondary);
+}
+
+.map-screen {
+    height: min(480px, 65vh);
+    min-height: 300px;
+}
+
+.dom-viewport,
+.flow-viewport {
+    position: absolute;
+    inset: 0;
+}
+
+.dom-viewport {
+    overflow: hidden;
+    cursor: grab;
+    touch-action: pan-y;
+}
+.dom-viewport:active {
+    cursor: grabbing;
+}
+.dom-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    transform-origin: 0 0;
+}
+.dom-arrows {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+}
+.dom-arrow {
+    stroke: var(--edge);
+    stroke-width: 2;
+}
+.dom-arrowhead {
+    fill: var(--edge);
+    stroke: var(--edge);
+}
+
+.flow-viewport .react-flow {
+    --xy-background-color: transparent;
+    font-family: inherit;
+}
+.flow-viewport .react-flow__attribution {
+    background: transparent;
+}
+
+.location-card {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: var(--radius);
+    border: 1px solid var(--tertiary);
+    background: var(--theme);
+    color: var(--primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+.location-name {
+    font-size: 19px;
+    font-weight: 600;
+}
+.location-coord {
+    font-size: 14px;
+    color: var(--secondary);
+    font-variant-numeric: tabular-nums;
+}
+.location-card.is-foreign {
+    border-style: dashed;
+    border-color: var(--secondary);
+}
+.location-card.is-duplicated {
+    border: 2px solid var(--bad);
+}
+.location-tag,
+.location-badge {
+    position: absolute;
+    top: 6px;
+    font-size: 13px;
+    line-height: 1.3;
+}
+.location-tag {
+    left: 8px;
+    color: var(--secondary);
+}
+.location-badge {
+    right: 8px;
+    color: var(--bad);
+    font-weight: 600;
+}
+.react-flow .hidden-handle {
+    opacity: 0;
+    pointer-events: none;
+    min-width: 0;
+    min-height: 0;
+    width: 2px;
+    height: 2px;
+    border: 0;
+}
+.react-flow__node-location {
+    cursor: default;
+}
+.react-flow__node-location.draggable {
+    cursor: grab;
+}
+
+.empty-cell {
+    width: 120px;
+    height: 120px;
+    border-radius: var(--radius);
+    border: 1px dashed var(--tertiary);
+}
+
+.screen-top,
+.screen-legend {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    font-size: 13px;
+    color: var(--secondary);
+    pointer-events: none;
+    z-index: 5;
+}
+.screen-top {
+    top: 8px;
+}
+.screen-alert {
+    font-size: 14px;
+    font-weight: 600;
+}
+.screen-legend {
+    bottom: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 14px;
+}
+.screen-legend span::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    margin-right: 6px;
+    vertical-align: middle;
+    border-top: 2px solid var(--edge);
+}
+.screen-legend .legend-exit::before {
+    border-top: 2px dashed var(--exit);
+}
+.screen-legend .legend-bogus {
+    color: var(--bad);
+}
+.screen-legend .legend-bogus::before {
+    border-top-color: var(--bad);
+}
+
+.guide {
+    min-height: calc(1.6em * 2);
+}
+
+.controls {
+    min-height: 42px;
+}
+.controls .switch button {
+    font-weight: 600;
+}
+.controls .action {
+    width: 168px;
+}
+.controls .action.is-placeholder {
+    visibility: hidden;
+}
+
+.readout b.good {
+    color: var(--ok);
+}
+.readout b.bad {
+    color: var(--bad);
+}
+
+@media (max-width: 640px) {
+    .map-screen {
+        height: 500px;
+    }
+    .controls .switch button {
+        padding: 0 10px;
+    }
+}
