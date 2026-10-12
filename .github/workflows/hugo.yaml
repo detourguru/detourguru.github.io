@@ -32,6 +32,19 @@ jobs:
           hugo-version: "latest"
           extended: true
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: demos/package-lock.json
+
+      - name: Build demos
+        working-directory: demos
+        run: |
+          npm ci
+          npm run build
+
       - name: Build
         run: hugo --minify
 

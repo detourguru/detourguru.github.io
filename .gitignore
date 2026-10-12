@@ -36,3 +36,6 @@ yarn-error.log*
 /docs/
 
 AGENTS.md
+
+# demos 빌드 산출물 (CI에서 demos/ 를 빌드하고 이 안에다가 넣는다)
+/static/demos/
