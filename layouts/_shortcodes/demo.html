@@ -3,12 +3,14 @@
 {{- $title := .Get "title" | default "직접 해보기" -}}
 {{- $height := .Get "height" | default "720" -}}
 {{- $src := printf "/demos/%s/" $name | relURL -}}
+{{- /* 배포마다 주소를 바꿔야 브라우저가 캐시한 예전 데모 HTML(지워진 JS를 가리킴)을 쓰지 않는다 */ -}}
+{{- $versioned := printf "%s?v=%d" $src now.Unix -}}
 <figure class="demo-embed" style="--demo-h: {{ $height }}px">
   <div class="demo-embed__bar">
     <strong>{{ $title }}</strong>
-    <a href="{{ $src }}" target="_blank" rel="noopener">새 창에서 열기</a>
+    <a href="{{ $versioned }}" target="_blank" rel="noopener">새 창에서 열기</a>
   </div>
-  <iframe data-src="{{ $src }}" title="{{ $title }}" loading="lazy"></iframe>
+  <iframe data-src="{{ $versioned }}" title="{{ $title }}" loading="lazy"></iframe>
 </figure>
 <style>
   .demo-embed { margin: 24px 0; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
@@ -21,7 +23,7 @@
     var theme = function () { return document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'; };
     var apply = function () {
       document.querySelectorAll('.demo-embed iframe').forEach(function (frame) {
-        var src = frame.dataset.src + '?theme=' + theme();
+        var src = frame.dataset.src + '&theme=' + theme();
         if (frame.getAttribute('src') !== src) frame.setAttribute('src', src);
       });
     };
