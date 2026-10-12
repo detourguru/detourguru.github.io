@@ -1,0 +1,173 @@
+{
+  "persona": "도현",
+  "viewer": {
+    "id": "u-dohyun"
+  },
+  "content": {
+    "id": "c-42",
+    "ownerId": "u-seoyeon"
+  },
+  "steps": [
+    {
+      "id": "step#1",
+      "title": "상세 화면 열기 (남의 콘텐츠)",
+      "locators": [
+        {
+          "selector": "role=heading name=/.+/",
+          "matches": 1,
+          "observed": "일치 1개 ('달빛 정원의 비밀')"
+        }
+      ],
+      "logIds": [
+        "log#1",
+        "log#2"
+      ],
+      "note": "콘텐츠 주인 u-seoyeon, 보는 사람 u-dohyun"
+    },
+    {
+      "id": "step#2",
+      "title": "편집 진입점 찾기 — expectAbsent (로케이터 2개)",
+      "target": "edit",
+      "locators": [
+        {
+          "selector": "role=button name=/^\\s*(수정|편집|삭제)/",
+          "matches": 0,
+          "observed": "일치 0개"
+        },
+        {
+          "selector": "role=link name=/^\\s*(수정|편집|삭제)/",
+          "matches": 0,
+          "observed": "일치 0개"
+        }
+      ],
+      "logIds": [],
+      "note": "로케이터 2개 모두 일치 0개"
+    },
+    {
+      "id": "step#3",
+      "title": "비소유자로 PATCH 직접 보내기",
+      "locators": [],
+      "logIds": [
+        "log#3"
+      ],
+      "note": "PATCH 응답 403"
+    },
+    {
+      "id": "step#4",
+      "title": "구매 버튼 빠르게 두 번 누르기",
+      "target": "purchase",
+      "locators": [
+        {
+          "selector": "role=button name=\"구매\"",
+          "matches": 1,
+          "observed": "일치 1개 ('구매')"
+        }
+      ],
+      "logIds": [
+        "log#4"
+      ],
+      "note": "클릭 2회, 구매 요청 1건 전송"
+    },
+    {
+      "id": "step#5",
+      "title": "잔액 확인 (화면 + 서버)",
+      "locators": [],
+      "logIds": [
+        "log#5"
+      ],
+      "note": "화면 잔액 700P, 서버 잔액 700P, 구매 요청 1건 중 200 응답 1건"
+    },
+    {
+      "id": "step#6",
+      "title": "공유 찾기 — 로케이터 1개 (버튼 이름 \"공유\")",
+      "target": "share",
+      "locators": [
+        {
+          "selector": "role=button name=\"공유\"",
+          "matches": 0,
+          "observed": "일치 0개"
+        }
+      ],
+      "logIds": [],
+      "note": "일치 0개"
+    },
+    {
+      "id": "step#7",
+      "title": "공유 찾기 — expectAbsent (버튼·링크 로케이터 2개)",
+      "target": "share",
+      "locators": [
+        {
+          "selector": "role=button name=/공유/",
+          "matches": 0,
+          "observed": "일치 0개"
+        },
+        {
+          "selector": "role=link name=/공유/",
+          "matches": 1,
+          "observed": "일치 1개 ('공유하기')"
+        }
+      ],
+      "logIds": [],
+      "note": "찾음: role=link name=/공유/ → 일치 1개 ('공유하기')"
+    }
+  ],
+  "log": [
+    {
+      "id": "log#1",
+      "method": "GET",
+      "path": "/contents/c-42",
+      "status": 200,
+      "body": {
+        "id": "c-42",
+        "title": "달빛 정원의 비밀",
+        "authorName": "서연",
+        "ownerId": "u-seoyeon",
+        "price": 300,
+        "canEdit": false
+      }
+    },
+    {
+      "id": "log#2",
+      "method": "GET",
+      "path": "/me",
+      "status": 200,
+      "body": {
+        "id": "u-dohyun",
+        "balance": 1000,
+        "purchased": false
+      }
+    },
+    {
+      "id": "log#3",
+      "method": "PATCH",
+      "path": "/contents/c-42",
+      "status": 403,
+      "body": {
+        "error": "FORBIDDEN",
+        "message": "소유자만 수정할 수 있습니다"
+      }
+    },
+    {
+      "id": "log#4",
+      "method": "POST",
+      "path": "/contents/c-42/purchase",
+      "status": 200,
+      "body": {
+        "purchased": true,
+        "charged": 300,
+        "balance": 700
+      }
+    },
+    {
+      "id": "log#5",
+      "method": "GET",
+      "path": "/me",
+      "status": 200,
+      "body": {
+        "id": "u-dohyun",
+        "balance": 700,
+        "purchased": true
+      }
+    }
+  ]
+}

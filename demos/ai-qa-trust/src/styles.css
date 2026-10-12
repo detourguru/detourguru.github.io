@@ -1,0 +1,56 @@
+.tutorial-bar { display: grid; grid-template-columns: minmax(0, 1fr) 176px; align-items: center; gap: 16px; min-height: calc(1.6em * 2 + 4px); }
+.tutorial-action button { width: 100%; }
+@media (max-width: 640px) {
+    .tutorial-bar { grid-template-columns: minmax(0, 1fr); min-height: 112px; align-content: space-between; gap: 8px; }
+}
+.guide.good { color: var(--ok); }
+.footnote { text-align: center; font-size: 12.5px; color: var(--secondary); }
+
+.qa-screen { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: 300px; }
+.qa-app { padding: 20px; border-right: 1px solid var(--border); background: var(--code-bg); }
+.qa-findings { padding: 20px; display: grid; align-content: start; gap: 10px; }
+.qa-head { font-size: 13px; color: var(--secondary); }
+.qa-list { margin: 0; padding-left: 20px; display: grid; gap: 10px; }
+.qa-item { all: unset; display: block; width: 100%; border-radius: 4px; }
+.qa-item:not(:disabled) { cursor: pointer; }
+.qa-item:not(:disabled):hover .qa-label { text-decoration: underline; text-underline-offset: 3px; }
+.qa-item:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.qa-item[aria-expanded='true'] .qa-label { font-weight: 600; }
+.qa-label { display: block; }
+.qa-list li.is-blocked .qa-label { text-decoration: line-through; color: var(--secondary); }
+.qa-check { display: block; font-size: 13px; }
+.qa-detail { grid-column: 1 / -1; border-top: 1px solid var(--border); padding: 16px 20px 20px; }
+
+.target-app { background: var(--entry); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+.target-bar { display: flex; justify-content: space-between; font-size: 13px; color: var(--secondary); padding-bottom: 8px; margin-bottom: 12px; border-bottom: 1px solid var(--border); }
+.target-empty { color: var(--secondary); margin: 24px 0; text-align: center; font-size: 14px; }
+.target-detail h3 { font-size: 17px; margin: 0 0 2px; }
+.target-author { margin: 0 0 14px; color: var(--secondary); font-size: 14px; }
+.target-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.target-actions a { padding: 6px 4px; font-size: 14px; }
+.target-msg { margin: 10px 0 0; font-size: 14px; color: var(--secondary); }
+[data-qa-highlight] { outline: 2px solid var(--bad); outline-offset: 3px; border-radius: 6px; }
+.is-spot { outline: 2px solid var(--bad); outline-offset: 3px; border-radius: 4px; }
+
+.finding-detail { display: grid; gap: 10px; }
+.ev-table { width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed; }
+.ev-table th { text-align: left; font-weight: 500; color: var(--secondary); padding: 4px 6px; border-bottom: 1px solid var(--border); font-size: 12px; }
+.ev-table td { padding: 6px; vertical-align: top; border-bottom: 1px solid var(--border); overflow-wrap: anywhere; }
+.ev-table code { background: none; padding: 0; font-size: 12px; }
+.ev-table td.good code, .ev-table td.bad code { color: inherit; }
+.ev-table mark { background: none; color: inherit; font-weight: 700; text-decoration: underline; }
+.gate-code { background: var(--code-bg); border-radius: 6px; padding: 6px 0; font-family: var(--mono); font-size: 12px; line-height: 1.6; overflow-x: auto; }
+.gate-file { padding: 2px 12px 4px; font-size: 11.5px; color: var(--secondary); }
+.gate-code pre { margin: 0; }
+.gate-code pre + pre::before { content: '…'; display: block; padding: 0 12px; color: var(--secondary); }
+.gate-code pre > span { display: block; padding: 0 12px; white-space: pre; color: var(--secondary); border-left: 3px solid transparent; }
+.gate-code pre > span.hit-bad { color: var(--primary); border-left-color: var(--bad); background: var(--tertiary); }
+.gate-code pre > span.hit-ok { color: var(--primary); border-left-color: var(--ok); background: var(--tertiary); }
+.gate-code .ln { display: inline-block; width: 2.6em; color: var(--secondary); opacity: 0.6; user-select: none; }
+
+@media (max-width: 640px) {
+    .qa-screen { grid-template-columns: minmax(0, 1fr); }
+    .qa-app { border-right: 0; border-bottom: 1px solid var(--border); padding: 14px; }
+    .qa-findings { padding: 16px; }
+    .qa-detail { padding: 14px; }
+}

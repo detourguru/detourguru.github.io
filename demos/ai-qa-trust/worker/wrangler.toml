@@ -1,0 +1,7 @@
+name = "ai-qa-trust-judge"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
+
+[vars]
+DAILY_CAP = "200"
+PER_IP_PER_MINUTE = "5"
