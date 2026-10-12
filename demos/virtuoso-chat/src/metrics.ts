@@ -9,6 +9,7 @@ const MISS_CHECK_DELAY_MS = 1000;
 const MISS_CONFIRM_MS = 150;
 const PUBLISH_INTERVAL_MS = 100;
 const SHAKE_CAUSE_LOOKBACK_MS = 1500;
+const MOUNT_SETTLE_MS = 2500;
 const SHAKE_REPORT_PX = 4;
 
 export type MetricsSnapshot = {
@@ -73,6 +74,8 @@ export const useLiveMetrics = (scroller: HTMLElement | null, onEvent: (event: Me
         let farthestAway = 0;
         let lastPublishAt = 0;
         let frame = 0;
+        
+        const quietUntil = performance.now() + MOUNT_SETTLE_MS;
 
         const tick = (now: number) => {
             const counters = countersRef.current;
@@ -91,7 +94,7 @@ export const useLiveMetrics = (scroller: HTMLElement | null, onEvent: (event: Me
                 if (counters.userLeftBottom) farthestAway = Math.max(farthestAway, distance);
             }
 
-            const idle = !userActive && now - counters.lastContentAt > CONTENT_SETTLE_MS;
+            const idle = !userActive && now > quietUntil && now - counters.lastContentAt > CONTENT_SETTLE_MS;
             let shift = 0;
             if (anchor && idle) {
                 const prev = scroller.querySelector(`[data-msg-id="${CSS.escape(anchor.id)}"]`);
