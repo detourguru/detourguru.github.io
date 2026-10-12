@@ -1,0 +1,128 @@
+.chat-screen {
+    width: min(380px, 100%);
+    height: min(500px, 62vh);
+    margin: 0 auto;
+}
+@media (max-width: 640px) {
+    .chat-screen { width: 100%; }
+}
+
+.distance {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 1;
+    padding: 0 6px;
+    border-radius: 4px;
+    background: var(--entry);
+    font: 12px/1.7 var(--mono);
+    color: var(--secondary);
+    font-variant-numeric: tabular-nums;
+}
+.distance.bad { color: var(--bad); }
+
+.readout b.good { color: var(--ok); }
+.readout b.bad { color: var(--bad); }
+
+.scroller { height: 100%; overflow-y: auto; overscroll-behavior: contain; }
+
+/* virtuoso는 margin을 재지 못하므로 행 간격은 padding으로만 준다 */
+.row { display: flex; padding: 4px 12px; }
+.row:first-child { padding-top: 12px; }
+.row-mine { justify-content: flex-end; }
+.row > div { max-width: 80%; min-width: 0; }
+
+.bubble { background: var(--code-bg); color: var(--content); border-radius: var(--radius); padding: 7px 11px; font-size: 14px; }
+.row-mine .bubble { background: var(--entry); border: 1px solid var(--tertiary); }
+.text { white-space: pre-wrap; overflow-wrap: anywhere; }
+
+.image { width: 220px; max-width: 100%; border-radius: 6px; margin-bottom: 6px; }
+.image[data-loaded='true'] { background: var(--tertiary); }
+.image-loaded { height: 200px; }
+.image-reserved { aspect-ratio: 220 / 200; }
+.image-loading { display: block; padding: 2px 0; font-size: 12px; color: var(--secondary); }
+
+.choices { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 8px; }
+.choices button { min-height: 28px; padding: 0 10px; font-size: 13px; }
+.choices-hidden { visibility: hidden; }
+
+.caret { display: inline-block; width: 0.45em; height: 1em; margin-left: 2px; vertical-align: -0.15em; background: currentColor; opacity: 0.5; }
+
+.enter-grow { overflow: hidden; animation: enter-grow 600ms linear; }
+@keyframes enter-grow {
+    from { max-height: 0; opacity: 0; }
+    to { max-height: 400px; opacity: 1; }
+}
+
+/* 높이를 바꾸면 고친 뒤에도 흔들리므로 transform과 opacity만 쓴다 */
+.enter-fade { animation: enter-fade 400ms ease-out; }
+@keyframes enter-fade {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .enter-fade { animation: none; }
+}
+
+.events {
+    position: absolute;
+    top: 32px;
+    right: 8px;
+    z-index: 1;
+    display: grid;
+    justify-items: end;
+    gap: 4px;
+    max-width: calc(100% - 16px);
+    pointer-events: none;
+}
+.event {
+    padding: 2px 8px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--entry);
+    color: var(--bad);
+    font-size: 13px;
+    line-height: 1.5;
+    max-width: 320px;
+    animation: event-life 2500ms linear forwards;
+}
+.event-cause { font-size: 12.5px; color: var(--secondary); }
+@keyframes event-life {
+    0% { opacity: 0; }
+    6% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.miss-flash {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    height: 2px;
+    background: var(--bad);
+    pointer-events: none;
+    animation: miss-flash 1200ms ease-out forwards;
+}
+@keyframes miss-flash {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .event { animation: none; }
+    .miss-flash { display: none; }
+}
+
+.guide { height: 3.4em; overflow: hidden; }
+
+.readout { min-height: 3.2em; }
+
+@media (max-width: 640px) {
+    .chat-screen { height: 56vh; }
+    .guide { height: 6.8em; }
+    .event:nth-child(n + 2) { display: none; }
+    .readout { min-height: 4.8em; }
+    .controls button { min-height: 40px; }
+}
