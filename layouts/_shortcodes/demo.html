@@ -2,10 +2,11 @@
 {{- $name := .Get "name" -}}
 {{- $title := .Get "title" | default "직접 해보기" -}}
 {{- $height := .Get "height" | default "720" -}}
+{{- $auto := eq $height "auto" -}}
 {{- $src := printf "/demos/%s/" $name | relURL -}}
 {{- /* 배포마다 주소를 바꿔야 브라우저가 캐시한 예전 데모 HTML(지워진 JS를 가리킴)을 쓰지 않는다 */ -}}
 {{- $versioned := printf "%s?v=%d" $src now.Unix -}}
-<figure class="demo-embed" style="--demo-h: {{ $height }}px">
+<figure class="demo-embed{{ if $auto }} demo-embed--auto{{ end }}" style="--demo-h: {{ if $auto }}480{{ else }}{{ $height }}{{ end }}px">
   <div class="demo-embed__bar">
     <strong>{{ $title }}</strong>
     <a href="{{ $versioned }}" target="_blank" rel="noopener">새 창에서 열기</a>
@@ -17,6 +18,7 @@
   .demo-embed__bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 12px; background: var(--code-bg); font-size: 0.9rem; }
   .demo-embed__bar a { box-shadow: none; white-space: nowrap; }
   .demo-embed iframe { display: block; width: 100%; height: min(var(--demo-h), 85vh); border: 0; }
+  .demo-embed--auto iframe { height: var(--demo-h); transition: height 0.15s ease-out; }
 </style>
 <script>
   (function () {
@@ -27,8 +29,41 @@
         if (frame.getAttribute('src') !== src) frame.setAttribute('src', src);
       });
     };
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', apply);
-    else apply();
+
+    var fit = function (frame) {
+      var doc;
+      try { doc = frame.contentDocument; } catch (e) { return; }
+      if (!doc || !doc.body) return;
+      var root = doc.getElementById('root') || doc.body;
+      var measure = function () {
+        var bottom = 0;
+        Array.prototype.forEach.call(root.children, function (child) {
+          var rect = child.getBoundingClientRect();
+          var style = doc.defaultView.getComputedStyle(child);
+          bottom = Math.max(bottom, rect.bottom + parseFloat(style.marginBottom || '0'));
+        });
+        var height = Math.ceil(bottom + (doc.defaultView.scrollY || 0));
+        if (height > 0 && Math.abs(height - frame.offsetHeight) > 1) frame.style.height = height + 'px';
+      };
+      measure();
+      if (frame._demoObserver) frame._demoObserver.disconnect();
+      frame._demoObserver = new ResizeObserver(measure);
+      frame._demoObserver.observe(root);
+      Array.prototype.forEach.call(root.children, function (child) { frame._demoObserver.observe(child); });
+      new MutationObserver(function () {
+        Array.prototype.forEach.call(root.children, function (child) { frame._demoObserver.observe(child); });
+        measure();
+      }).observe(root, { childList: true });
+    };
+    var watchAuto = function () {
+      document.querySelectorAll('.demo-embed--auto iframe').forEach(function (frame) {
+        frame.addEventListener('load', function () { fit(frame); });
+      });
+    };
+
+    var init = function () { watchAuto(); apply(); };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+    else init();
     new MutationObserver(apply).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   })();
 </script>

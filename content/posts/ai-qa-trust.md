@@ -13,7 +13,7 @@ series = ['AI QA 담당자 만들기']
 
 AI 결과를 사람이 매번 다시 확인해야 하면 QA를 맡긴 의미가 없다. 그래서 무엇을 보게 할지, 결과를 어떻게 믿을지, 찾은 걸 누가 고칠지를 하나씩 정하게 됐다.
 
-{{< demo name="ai-qa-trust" height="900" >}}
+{{< demo name="ai-qa-trust" height="auto" >}}
 
 ## 페르소나마다 이탈 조건 정해두기
 
