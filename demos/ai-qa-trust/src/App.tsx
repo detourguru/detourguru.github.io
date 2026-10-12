@@ -103,9 +103,6 @@ export const App = () => {
         <main className="page">
             <div className="title">
                 <h1>AI QA 판정 게이트</h1>
-                <a href="/posts/ai-qa-trust/" target="_top">
-                    글로 돌아가기
-                </a>
             </div>
             <p className="desc">AI가 &lsquo;확정&rsquo;한 결함이라도 근거가 서버 로그와 맞지 않으면 일감으로 올리지 않는다.</p>
 

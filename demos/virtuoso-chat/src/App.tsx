@@ -168,9 +168,6 @@ export const App = () => {
         <main className="page">
             <header className="title">
                 <h1>채팅 바닥 고정</h1>
-                <a href="/posts/virtuoso-chat-bottom/" target="_top">
-                    글로 돌아가기
-                </a>
             </header>
             <p className="desc">메시지가 늦게 커지면 스크롤이 바닥에서 떨어진다.</p>
 

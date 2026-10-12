@@ -102,9 +102,6 @@ export const MapDemo = () => {
         <main className="page">
             <header className="title">
                 <h1>맵 에디터: 카드와 화살표</h1>
-                <a href="/posts/map-editor-nodes-and-edges/" target="_top">
-                    글로 돌아가기
-                </a>
             </header>
             <p className="guide" data-testid="guide" aria-live="polite">
                 {guide.counter && <span className="guide-counter">{guide.counter}</span>}

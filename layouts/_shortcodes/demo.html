@@ -1,36 +1,32 @@
-{{- /* 사용법: {{< demo name="virtuoso-chat" title="..." height="720" >}}
-     demos/<name> 이 빌드되어 /demos/<name>/ 으로 서빙된다. 클릭 시에만 iframe이 붙는다 */ -}}
+{{- /* 사용법: {{< demo name="virtuoso-chat" height="720" >}} 데모는 demos/<name>에서 빌드되어 /demos/<name>/ 으로 서빙된다. */ -}}
 {{- $name := .Get "name" -}}
 {{- $title := .Get "title" | default "직접 해보기" -}}
 {{- $height := .Get "height" | default "720" -}}
 {{- $src := printf "/demos/%s/" $name | relURL -}}
-<figure class="demo-embed" data-src="{{ $src }}" style="--demo-h: {{ $height }}px">
+<figure class="demo-embed" style="--demo-h: {{ $height }}px">
   <div class="demo-embed__bar">
     <strong>{{ $title }}</strong>
     <a href="{{ $src }}" target="_blank" rel="noopener">새 창에서 열기</a>
   </div>
-  <button type="button" class="demo-embed__load">데모 불러오기</button>
+  <iframe data-src="{{ $src }}" title="{{ $title }}" loading="lazy"></iframe>
 </figure>
-{{- if not (.Page.Scratch.Get "demoEmbedAssets") -}}
-{{- .Page.Scratch.Set "demoEmbedAssets" true -}}
 <style>
   .demo-embed { margin: 24px 0; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
   .demo-embed__bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 12px; background: var(--code-bg); font-size: 0.9rem; }
   .demo-embed__bar a { box-shadow: none; white-space: nowrap; }
-  .demo-embed__load { display: block; width: 100%; height: 160px; border: 0; background: var(--entry); color: var(--primary); font-size: 1rem; cursor: pointer; }
   .demo-embed iframe { display: block; width: 100%; height: min(var(--demo-h), 85vh); border: 0; }
 </style>
 <script>
-  document.addEventListener('click', function (event) {
-    var button = event.target.closest('.demo-embed__load');
-    if (!button) return;
-    var figure = button.closest('.demo-embed');
-    var theme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
-    var iframe = document.createElement('iframe');
-    iframe.src = figure.dataset.src + '?theme=' + theme;
-    iframe.title = figure.querySelector('strong').textContent;
-    iframe.loading = 'lazy';
-    button.replaceWith(iframe);
-  });
+  (function () {
+    var theme = function () { return document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'; };
+    var apply = function () {
+      document.querySelectorAll('.demo-embed iframe').forEach(function (frame) {
+        var src = frame.dataset.src + '?theme=' + theme();
+        if (frame.getAttribute('src') !== src) frame.setAttribute('src', src);
+      });
+    };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', apply);
+    else apply();
+    new MutationObserver(apply).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  })();
 </script>
-{{- end -}}
