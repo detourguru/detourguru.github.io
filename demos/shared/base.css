@@ -46,7 +46,6 @@
     color-scheme: dark;
 }
 
-/* 데모 코드에서 쓰는 이름. 전부 위 토큰을 가리킨다. */
 :root {
     --bg: var(--theme);
     --surface: var(--code-bg);
@@ -86,7 +85,6 @@ button {
 button:hover:not(:disabled) { opacity: 0.85; }
 button:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 button:disabled { opacity: 0.4; cursor: not-allowed; }
-/* PaperMod 페이지 이동 버튼 모양 */
 .primary { background: var(--primary); color: var(--theme); border-radius: 18px; padding: 0 18px; font-weight: 500; }
 
 .page { max-width: calc(var(--main-width) + var(--gap) * 2); margin: 0 auto; padding: var(--gap); display: grid; gap: 16px; }
@@ -104,7 +102,6 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
 .switch button { background: transparent; color: var(--secondary); min-height: 30px; border-radius: 6px; }
 .switch button[aria-pressed='true'] { background: var(--entry); color: var(--primary); font-weight: 600; box-shadow: 0 0 0 1px var(--border); }
 
-/* 지금 할 일 한 줄. 세 데모가 같은 모양을 쓴다. 높이 예약은 각 데모가 한다. */
 .guide { font-size: 16px; font-weight: 600; line-height: 1.6; color: var(--primary); }
 .guide-counter { color: var(--secondary); font-variant-numeric: tabular-nums; margin-right: 8px; }
 .guide.good, .guide-good { color: var(--ok); }
