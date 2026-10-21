@@ -11,6 +11,7 @@ allowed:
   - 테스트
   - 생산성
   - 접근성
+  - 보안
 
   # 기술
   - React
@@ -28,6 +29,7 @@ allowed_en:
   - Testing
   - Productivity
   - Accessibility
+  - Security
 
   # Tech
   - React
