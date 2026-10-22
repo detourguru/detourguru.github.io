@@ -17,18 +17,21 @@ export const App = () => {
 
     return (
         <main className="page">
-            <p className="desc">같은 캐스팅보드를 세 번 읽혔다. 빨간 칸이 잘못 읽은 칸이다.</p>
-
             <div className="controls">
-                <div className="switch" role="group" aria-label="보내는 방법">
+                <div className="switch" role="group" aria-label="다수결 도입 전후">
                     <button type="button" aria-pressed={mode === 'single'} onClick={() => setMode('single')}>
-                        한 번만 보내기
+                        다수결 전
                     </button>
                     <button type="button" aria-pressed={mode === 'vote'} onClick={() => setMode('vote')}>
-                        세 번 보내 다수결
+                        다수결 후
                     </button>
                 </div>
             </div>
+
+            <p className="desc">
+                {mode === 'single' ? '캐스팅보드를 한 번 읽혀서 그 결과를 그대로 저장한다.' : '같은 캐스팅보드를 세 번 읽혀서 배역마다 다수결로 정한다.'}{' '}
+                빨간 칸이 잘못 읽은 칸이다.
+            </p>
 
             <table className="board">
                 <thead>
@@ -51,13 +54,10 @@ export const App = () => {
                         ))}
                     </tr>
                     {REQUESTS.map((casting, index) => {
-                        const sent = mode === 'vote' || index === 0;
+                        if (mode === 'single' && index > 0) return null; // 다수결 전에는 요청 하나만 보낸다
                         return (
-                            <tr key={index} className={sent ? 'request' : 'request is-off'}>
-                                <th scope="row">
-                                    요청 {index + 1}
-                                    {!sent && <span className="sub">안 보냄</span>}
-                                </th>
+                            <tr key={index} className="request">
+                                <th scope="row">요청 {index + 1}</th>
                                 {ROLES.map((role) => {
                                     const right = isRight(casting[role], role);
                                     return (
@@ -89,15 +89,17 @@ export const App = () => {
             </table>
 
             <p aria-live="polite" className={`guide ${storedRight ? 'guide-good' : 'guide-bad'}`}>
-                {mode === 'single' ? '한 번만 보내면 잘못 읽은 칸도 그대로 저장된다.' : '틀린 칸이 요청마다 달라서, 틀린 값은 1표밖에 못 받고 걸러진다.'}
+                {mode === 'single'
+                    ? '요청 하나의 결과를 그대로 저장하니 잘못 읽은 칸도 그대로 남는다.'
+                    : '틀린 칸이 요청마다 다르기 때문에 다수결에 따라 정답으로 가장 많이 꼽힌 값을 저장한다.'}
                 <span className="guide-detail">
                     {mode === 'single'
-                        ? '요청 2처럼 맞게 읽을 때도 있지만, 어느 응답을 받을지는 고를 수 없다.'
+                        ? '다시 보내면 맞게 읽을 때도 있지만, 어느 응답을 받을지는 고를 수 없다.'
                         : '배역마다 2표 이상 받은 배우만 저장한다.'}
                 </span>
             </p>
 
-            <p className="footnote">배우는 이모지로 바꿨습니다. 다수결 계산은 회전문 코드를 옮겨 이 화면에서 실행합니다.</p>
+            <p className="footnote">다수결 계산은 회전문 코드를 옮겨 이 화면에서 실행합니다.</p>
         </main>
     );
 };

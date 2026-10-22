@@ -14,8 +14,7 @@
 .board tr.truth th { border-radius: var(--radius) 0 0 var(--radius); color: var(--secondary); }
 .board tr.truth td:last-child { border-radius: 0 var(--radius) var(--radius) 0; }
 
-.board tr.request th, .board tr.request td { border-bottom: 1px solid var(--border); transition: opacity 0.15s; }
-.board tr.request.is-off th, .board tr.request.is-off td { opacity: 0.25; }
+.board tr.request th, .board tr.request td { border-bottom: 1px solid var(--border); }
 
 .board td.is-bad { background: color-mix(in srgb, var(--bad) 14%, transparent); }
 .board td.is-bad .sub { color: var(--bad); font-weight: 600; }
