@@ -5,7 +5,7 @@ Disallow: /
 User-agent: *
 Allow: /
 
-Sitemap: {{ "sitemap.xml" | absURL }}
+Sitemap: {{ site.Home.Sitemap.Filename | absURL }}
 
 # 1. training / bulk scraping crawlers: blocked
 # 2. on-demand fetchers (a person hands them this URL): allowed on purpose

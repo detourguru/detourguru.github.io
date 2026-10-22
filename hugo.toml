@@ -11,6 +11,9 @@ enableGitInfo = true
 [frontmatter]
   lastmod = [":git", "lastmod", "date"]
 
+[sitemap]
+  filename = "sitemap-v2.xml"
+
 [services.googleAnalytics]
   ID = "G-JJHM4Z3H62"
 
