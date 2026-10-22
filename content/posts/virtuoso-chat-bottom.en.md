@@ -4,7 +4,6 @@ draft = false
 title = 'I Turned Off Virtualization to Fix Virtual Scrolling'
 description = "In a react-virtuoso chat, new messages stopped short of the bottom and the list jittered even when nobody was scrolling. The causes were followOutput aiming at a position computed from estimated heights, and re-measurement on remount. I compared the maintainer's suggestions, four workarounds I tried, and switching to TanStack Virtual, using reproduction results."
 tags = ["React", "Debugging", "Performance"]
-series = ['Chat Virtual Scroll Troubleshooting']
 +++
 
 When I first heard we needed real-time multi-user chat on the web, the first thing that came to mind was performance. I figured I was in for a long fight with optimization. On top of that, our product has animated message entrances, and every message differs in length and timing, so coordinating all of that was its own job. (Scrolling wasn't simple either — we had to support smart scroll with more than two conditions, plus auto-scroll and manual scroll, all at once.)
@@ -13,7 +12,7 @@ That's why, around August 2025 when we introduced virtual scrolling, the first t
 
 And the real problem was auto-scroll kept breaking. Out of desperation I started searching things like `virtual list auto scroll bottom`, and that's how I found react-virtuoso's docs — which actually advertised chat as a use case front and center. Checking it out, it had everything I needed: `followOutput`, `firstItemIndex`, `startReached`. So around February 2026 I moved the whole scroll logic over to this library.
 
-But then a new problem showed up. A new message would come in, and instead of sticking to the bottom, the scroll would stop a few dozen pixels short. And even while sitting still at the bottom, the scroll would jitter up and down every time a message arrived. (I unpacked why these two symptoms keep recurring, from a coordinate-system angle, in an [earlier post](/posts/virtuoso-manual-correction/) — Korean only for now. Here I'll focus on the two symptoms themselves and the workarounds.)
+But then a new problem showed up. A new message would come in, and instead of sticking to the bottom, the scroll would stop a few dozen pixels short. And even while sitting still at the bottom, the scroll would jitter up and down every time a message arrived.
 
 ## Symptom A: The Scroll Doesn't Keep Up With New Messages
 
