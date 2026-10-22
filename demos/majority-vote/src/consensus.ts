@@ -35,24 +35,3 @@ export const voteCasting = (runs: Casting[], threshold: number) => {
 
     return { casting, unsureRoles, best };
 };
-
-export type Outcome =
-    | { kind: 'failed' }
-    | { kind: 'single'; index: number; casting: Casting }
-    | { kind: 'vote'; threshold: number; casting: Casting; unsureRoles: string[]; best: Record<string, Vote | null> };
-
-export const combine = (arrived: { index: number; casting: Casting }[], threshold: number): Outcome => {
-    if (arrived.length === 0) return { kind: 'failed' };
-    if (arrived.length === 1) return { kind: 'single', index: arrived[0].index, casting: arrived[0].casting };
-
-    const effectiveThreshold = Math.min(threshold, arrived.length);
-
-    return {
-        kind: 'vote',
-        threshold: effectiveThreshold,
-        ...voteCasting(
-            arrived.map(({ casting }) => casting),
-            effectiveThreshold,
-        ),
-    };
-};
