@@ -115,7 +115,7 @@ export function buildConsensusPerformances(
 근데 매번 세 번씩 보내면 Gemini 무료 티어의 요청 한도도 세 배로 쓰게 된다. 그래서 이후 분당 요청 한도에 맞추려고 첫 요청 결과의 확신도가 충분하면 한 번으로 끝내도록 [바꿨다](https://github.com/detourguru/hoejeonmun/commit/afac8c9). 지금은 첫 요청을 먼저 보내고 필요할 때만 나머지 두 요청을 동시에 보낸다.
 
 ```ts
-const firstResult = await runAttempt(0) // 요청마다 AbortController로 끊는데, 첫 요청은 마감의 절반인 24초까지만 기다린다
+const firstResult = await runAttempt(0)
   .then((value) => ({ ok: true as const, value }))
   .catch((error) => ({ ok: false as const, error }));
 
@@ -158,7 +158,7 @@ return {
 
 첫 요청이 모든 회차에 0.7보다 높은 확신도를 매기면 그 결과는 다수결을 거치지 않고, 다른 경고가 없으면 검수 화면에서도 `N건 자동확정` 쪽으로 접혀서 보인다. 그래서 모델이 확신하면서 틀렸다면 그 결과는 그대로 통과한다. [#31 회차별 확신도 검수](https://github.com/detourguru/hoejeonmun/issues/31)에서 확신도를 처음 넣을 때 유의사항으로 적어둔 것도 이 경우였다. 그리고 확신도가 낮은 업로드는 첫 요청이 끝난 뒤에 두 요청을 더 보내기 때문에 세 요청을 한꺼번에 보내던 때보다 오래 걸릴 수 있다. 분당 요청 수를 줄이는 대신 이 두 가지를 받아들인 구조다.
 
-요청 수와 갈린 배역 수는 파싱마다 `casting_parse_consensus_logs` 테이블에 [남긴다](https://github.com/detourguru/hoejeonmun/commit/2ebd93e).
+요청 수와 갈린 배역 수는 파싱마다 `casting_parse_consensus_logs` 테이블에 [남긴다](https://github.com/detourguru/hoejeonmun/commit/2ebd93e). 9월 30일부터 10월 22일까지 쌓인 파싱 86건을 보면 35건은 첫 요청 하나로 끝났고, 나머지 51건은 두 요청을 더 보내 다수결을 판단했다.
 
 ## 배운점
 
