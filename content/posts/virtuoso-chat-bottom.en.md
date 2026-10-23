@@ -37,7 +37,7 @@ For items like these, the order between the scroll happening and the size settli
 
 I thought I was the only one running into this, but similar reports were sitting right there on virtuoso's GitHub issues. [#1273](https://github.com/petyosi/react-virtuoso/issues/1273) reports the scroll stopping mid-item when messages are added in quick succession (the maintainer guessed margin was the culprit).
 
-[#1447](https://github.com/petyosi/react-virtuoso/issues/1447) in particular points out that the formula above uses a default value before measurement happens, and the maintainer commented that you'd need to scroll first in order to measure the size. Honestly, this is exactly where I got stuck too. `To scroll accurately -> you need to know the height -> to know the height -> you need to render first -> and after rendering -> the height changes`. As of September 2026, when I'm writing this, issue 1447 is still open.
+[#1447](https://github.com/petyosi/react-virtuoso/issues/1447) in particular points out that the formula above uses a default value before measurement happens, and the maintainer commented that you'd need to scroll first in order to measure the size. Honestly, this is exactly where I got stuck too. `To scroll accurately -> you need to know the height -> to know the height -> you need to render first -> and after rendering -> the height changes`. As of September 2026, when I'm writing this, issue 1447 is still open. In October, the demo above still reproduced it on 4.18.19, the latest version, so I left the results and workarounds [as a comment on the issue](https://github.com/petyosi/react-virtuoso/issues/1447#issuecomment-6356572598).
 
 ## Symptom B: The Scroll Jumps as Messages Pile Up, and Past Animations Replay
 
