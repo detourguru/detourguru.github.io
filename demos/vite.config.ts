@@ -17,6 +17,7 @@ export default defineConfig({
                 'majority-vote': resolve(import.meta.dirname, 'majority-vote/index.html'),
                 'editor-layout': resolve(import.meta.dirname, 'editor-layout/index.html'),
                 'socket-catchup': resolve(import.meta.dirname, 'socket-catchup/index.html'),
+                'keyboard-resize': resolve(import.meta.dirname, 'keyboard-resize/index.html'),
             },
         },
     },

@@ -1,0 +1,48 @@
+.page { grid-template-columns: minmax(0, 1fr); justify-items: stretch; max-width: 560px; }
+
+.guide { text-align: center; min-height: calc(1.6em * 2 + 13px * 1.6); }
+
+.phones { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+
+.phone { display: grid; background: var(--entry); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+.phone-title { padding: 7px 10px; font-size: 13px; font-weight: 600; text-align: center; border-bottom: 1px solid var(--border); }
+
+/* 웹뷰 밖은 앱 바탕이다. 웹뷰를 먼저 줄이면 키보드가 다 올라올 때까지 이 바탕이 보인다 */
+.phone-screen { --bar-h: 44px; --field-h: 30px; position: relative; overflow: hidden; background: var(--entry); }
+
+.webview { position: absolute; top: 0; left: 0; right: 0; display: flex; flex-direction: column; background: var(--code-bg); }
+
+.chat { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; padding: 12px 10px; overflow: hidden; }
+.bubble { flex: none; align-self: flex-start; height: 16px; border-radius: 8px; background: var(--tertiary); }
+.bubble.is-mine { align-self: flex-end; }
+
+.input-bar { flex: none; height: var(--bar-h); display: flex; align-items: center; padding: 0 8px; }
+.input-field { flex: 1; height: var(--field-h); display: flex; align-items: center; padding: 0 12px; font-size: 12.5px; color: var(--secondary); background: var(--entry); border: 1.5px solid var(--tertiary); border-radius: 15px; }
+.input-field.is-visible { color: var(--ok); font-weight: 600; border-color: var(--ok); }
+
+.keyboard { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--secondary); background: var(--tertiary); }
+
+/* 키보드 뒤에 가려진 입력창 자리를 키보드 위에 비춰 보인다. 웹뷰를 줄이기 전이라 입력창은 화면 맨 아래에 있다 */
+.input-ghost { position: absolute; left: 8px; right: 8px; bottom: calc((var(--bar-h) - var(--field-h)) / 2); z-index: 1; height: var(--field-h); display: flex; align-items: center; padding: 0 12px; font-size: 12.5px; font-weight: 600; color: var(--bad); background: color-mix(in srgb, var(--bad) 10%, transparent); border: 1.5px dashed var(--bad); border-radius: 15px; }
+
+.scrubber { display: grid; gap: 6px; }
+.scrub-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.scrub-now { font-size: 13px; color: var(--secondary); }
+.scrub-legend { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--bad); white-space: nowrap; }
+.scrub-legend::before { content: ''; width: 10px; height: 10px; border-radius: 3px; background: color-mix(in srgb, var(--bad) 14%, transparent); border: 1px solid var(--bad); }
+.scrub-now b { color: var(--primary); font-variant-numeric: tabular-nums; }
+.scrub-track { position: relative; height: 24px; background: var(--code-bg); border-radius: 6px; cursor: pointer; touch-action: none; }
+.scrub-track:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.scrub-covered { position: absolute; top: 0; bottom: 0; left: 0; background: color-mix(in srgb, var(--bad) 14%, transparent); border-radius: 6px; pointer-events: none; }
+.scrub-tick { position: absolute; top: -4px; bottom: -4px; width: 2px; margin-left: -1px; background: var(--secondary); pointer-events: none; }
+.scrub-thumb { position: absolute; top: 50%; width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 0 3px var(--theme); pointer-events: none; }
+.scrub-labels { position: relative; height: 34px; }
+.scrub-labels span { position: absolute; top: 0; transform: translateX(-50%); font-size: 11px; line-height: 1.4; text-align: center; color: var(--secondary); white-space: nowrap; }
+.scrub-labels b { display: block; font-weight: 600; color: var(--primary); font-variant-numeric: tabular-nums; }
+
+.footnote { text-align: center; font-size: 12px; color: var(--secondary); }
+
+@media (max-width: 480px) {
+    .phones { gap: 8px; }
+    .chat { padding: 10px 8px; }
+}
