@@ -1,5 +1,7 @@
 # 채팅 바닥 고정 데모
 
+[English](README.en.md)
+
 react-virtuoso 채팅에서 새 메시지가 바닥에 붙지 않거나 가만히 있어도 스크롤이 흔들리는 현상을 재현하고, 고친 뒤와 바꿔 가며 볼 수 있게 만든 데모다.
 
 - 글: [가상 스크롤을 고치려고 가상화를 껐다](/posts/virtuoso-chat-bottom/)
