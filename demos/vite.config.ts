@@ -16,6 +16,7 @@ export default defineConfig({
                 'ai-qa-trust': resolve(import.meta.dirname, 'ai-qa-trust/index.html'),
                 'majority-vote': resolve(import.meta.dirname, 'majority-vote/index.html'),
                 'editor-layout': resolve(import.meta.dirname, 'editor-layout/index.html'),
+                'socket-catchup': resolve(import.meta.dirname, 'socket-catchup/index.html'),
             },
         },
     },
