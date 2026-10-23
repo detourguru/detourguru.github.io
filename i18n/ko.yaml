@@ -24,3 +24,9 @@
 
 - id: series_label
   translation: "시리즈"
+
+- id: demo_try
+  translation: "직접 해보기"
+
+- id: demo_open_new
+  translation: "새 창에서 열기"

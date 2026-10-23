@@ -24,3 +24,9 @@
 
 - id: series_label
   translation: "Series"
+
+- id: demo_try
+  translation: "Try it yourself"
+
+- id: demo_open_new
+  translation: "Open in new window"

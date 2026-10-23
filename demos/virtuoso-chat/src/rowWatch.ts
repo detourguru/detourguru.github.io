@@ -1,3 +1,5 @@
+import { t } from './text';
+
 const HISTORY_MS = 4000;
 const ROW_SELECTOR = '[data-msg-row]';
 
@@ -19,12 +21,11 @@ export type RowWatcher = {
     disconnect: () => void;
 };
 
-const KIND_LABEL: Record<string, string> = { image: '사진', choices: '선택지', stream: '스트리밍', text: '메시지' };
-
 const snippetOf = (row: HTMLElement) => {
     const text = row.querySelector('.text')?.textContent?.trim() ?? '';
-    if (!text) return KIND_LABEL[row.dataset.msgKind ?? ''] ?? '메시지';
-    return text.length > 12 ? `${text.slice(0, 12)}…` : text;
+    if (!text) return t.cause.kind[row.dataset.msgKind ?? ''] ?? t.cause.kind.text;
+    const max = t.cause.snippetLength;
+    return text.length > max ? `${text.slice(0, max)}…` : text;
 };
 
 const collectRows = (node: Node): HTMLElement[] => {
@@ -92,7 +93,7 @@ export const watchRows = (scroller: HTMLElement): RowWatcher => {
         const to = samples[samples.length - 1].height;
         if (to === from) return null;
         const row = rowsById.get(id);
-        const meta = metaById.get(id) ?? { kind: 'text', snippet: '메시지' };
+        const meta = metaById.get(id) ?? { kind: 'text', snippet: t.cause.kind.text };
         return {
             id,
             kind: meta.kind,
@@ -122,22 +123,15 @@ export const watchRows = (scroller: HTMLElement): RowWatcher => {
     };
 };
 
-const GROWTH_REASON: Record<string, string> = {
-    image: '이미지가 늦게 로드돼',
-    choices: '선택지 버튼이 늦게 붙어',
-    stream: '스트리밍 텍스트가 늘어나',
-    text: '등장 애니메이션으로',
-};
-
 export const describeMissCause = (change: RowChange | null) => {
-    if (!change) return '원인: 렌더 뒤에 메시지 높이가 바뀜';
-    const reason = GROWTH_REASON[change.kind] ?? GROWTH_REASON.text;
-    return `원인: 메시지가 붙은 뒤 ${reason} 높이가 ${change.from}px에서 ${change.to}px로 커짐`;
+    if (!change) return t.cause.unknown;
+    const reason = t.cause.growth[change.kind] ?? t.cause.growth.text;
+    return t.cause.miss(reason, change.from, change.to);
 };
 
 export const describeShakeCause = (change: RowChange | null) => {
-    if (!change) return '원인: 렌더 뒤에 메시지 높이가 바뀜';
-    if (!change.remounted) return `원인: ‘${change.snippet}’ 메시지 높이가 렌더 뒤 ${change.from}px에서 ${change.to}px로 바뀜`;
-    const replay = change.replayedEntry ? ' 등장 애니메이션이 처음부터 재생돼' : '';
-    return `원인: 화면 밖으로 나갔던 ‘${change.snippet}’ 메시지가 다시 그려지면서${replay} 높이가 ${change.from}px에서 ${change.to}px로 다시 측정됨`;
+    if (!change) return t.cause.unknown;
+    if (!change.remounted) return t.cause.changed(change.snippet, change.from, change.to);
+    const replay = change.replayedEntry ? t.cause.replay : '';
+    return t.cause.remounted(change.snippet, replay, change.from, change.to);
 };

@@ -1,15 +1,15 @@
 {{- /* 사용법: {{< demo name="virtuoso-chat" height="720" >}} 데모는 demos/<name>에서 빌드되어 /demos/<name>/ 으로 서빙된다. */ -}}
 {{- $name := .Get "name" -}}
-{{- $title := .Get "title" | default "직접 해보기" -}}
+{{- $title := .Get "title" | default (i18n "demo_try") -}}
 {{- $height := .Get "height" | default "720" -}}
 {{- $auto := eq $height "auto" -}}
 {{- $src := printf "/demos/%s/" $name | relURL -}}
 {{- /* 배포마다 주소를 바꿔야 브라우저가 캐시한 예전 데모 HTML(지워진 JS를 가리킴)을 쓰지 않는다 */ -}}
-{{- $versioned := printf "%s?v=%d" $src now.Unix -}}
+{{- $versioned := printf "%s?v=%d&lang=%s" $src now.Unix .Page.Language.Lang -}}
 <figure class="demo-embed{{ if $auto }} demo-embed--auto{{ end }}" style="--demo-h: {{ if $auto }}480{{ else }}{{ $height }}{{ end }}px">
   <div class="demo-embed__bar">
     <strong>{{ $title }}</strong>
-    <a href="{{ $versioned }}" target="_blank" rel="noopener">새 창에서 열기</a>
+    <a href="{{ $versioned }}" target="_blank" rel="noopener">{{ i18n "demo_open_new" }}</a>
   </div>
   <iframe data-src="{{ $versioned }}" title="{{ $title }}" loading="lazy"></iframe>
 </figure>

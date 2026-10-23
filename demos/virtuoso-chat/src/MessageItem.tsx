@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import type { Message } from './messages';
 import { useMountRegistry } from './mountRegistry';
+import { t } from './text';
 
 type Props = {
     message: Message;
@@ -33,7 +34,7 @@ const LateImage = (props: { id: string; fixedHeight: boolean }) => {
     const className = props.fixedHeight ? 'image image-reserved' : loaded ? 'image image-loaded' : 'image image-pending';
     return (
         <div className={className} data-loaded={loaded}>
-            {loaded ? null : <span className="image-loading">이미지 불러오는 중…</span>}
+            {loaded ? null : <span className="image-loading">{t.imageLoading}</span>}
         </div>
     );
 };

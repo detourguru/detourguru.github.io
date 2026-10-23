@@ -4,8 +4,11 @@ import '../../shared/base.css';
 import { applyThemeFromQuery } from '../../shared/theme';
 import { App } from './App';
 import './styles.css';
+import { LANG, t } from './text';
 
 applyThemeFromQuery();
+document.documentElement.lang = LANG;
+document.title = t.pageTitle;
 
 const root = document.getElementById('root');
 if (!root) throw new Error('#root 요소가 없습니다');

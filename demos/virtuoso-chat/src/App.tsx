@@ -4,14 +4,13 @@ import { VirtuosoList } from './lists/VirtuosoList';
 import type { MessageKind } from './messages';
 import { AT_BOTTOM_PX, useLiveMetrics, type MetricsEvent } from './metrics';
 import { createMountRegistry } from './mountRegistry';
+import { t } from './text';
 import { useFlashLines } from './useFlashLines';
 import { useMessageFeed } from './useMessageFeed';
 import { useScenario, type ScenarioActions, type ScenarioResult } from './useScenario';
 import { guideFor, TUTORIAL_START, tutorialReducer, useTutorialCompletion, type Side } from './useTutorial';
 
 const EVENT_LINE_MS = 4000;
-
-const SIDE_LABEL: Record<Side, string> = { before: '고치기 전', after: '고친 뒤' };
 
 const LATE_KINDS: readonly MessageKind[] = ['image', 'choices', 'stream'];
 
@@ -29,7 +28,8 @@ const Num = (props: { value: number; unit: string }) => (
 
 const ResultLine = (props: { side: Side; result: ScenarioResult }) => (
     <span>
-        {SIDE_LABEL[props.side]}: 바닥 미달 <Num value={props.result.miss} unit="회" />, 흔들림 <Num value={props.result.shift} unit="px" />
+        {t.side[props.side]}: {t.missLabel} <Num value={props.result.miss} unit={t.missUnit(props.result.miss)} />, {t.shakeLabel}{' '}
+        <Num value={props.result.shift} unit="px" />
     </span>
 );
 
@@ -53,10 +53,10 @@ export const App = () => {
         (event: MetricsEvent) => {
             if (suppressMarkersRef.current) return;
             if (event.kind === 'miss') {
-                pushFlash(`바닥에서 ${event.px}px 떨어진 채 멈춤`, event.cause);
+                pushFlash(t.missFlash(event.px), event.cause);
                 setMissFlashKey((n) => n + 1);
             } else if (event.kind === 'shake') {
-                pushFlash(`가만히 있는데 ${event.px}px 흔들림`, event.cause);
+                pushFlash(t.shakeFlash(event.px), event.cause);
             }
             if (!autoRunningRef.current) dispatchTutorial({ type: 'event', event, side: sideRef.current });
         },
@@ -167,9 +167,9 @@ export const App = () => {
     return (
         <main className="page">
             <header className="title">
-                <h1>채팅 바닥 고정</h1>
+                <h1>{t.title}</h1>
             </header>
-            <p className="desc">메시지가 늦게 커지면 스크롤이 바닥에서 떨어진다.</p>
+            <p className="desc">{t.desc}</p>
 
             <p className={`guide guide-${guide.tone}`} data-testid="guide" aria-live="polite">
                 <span>
@@ -181,7 +181,7 @@ export const App = () => {
 
             <div className="screen chat-screen">
                 <span className={distance > AT_BOTTOM_PX ? 'distance bad' : 'distance'} data-testid="distance">
-                    바닥까지 {distance}px
+                    {t.distance(distance)}
                 </span>
                 <div className="events" aria-live="polite" data-testid="events">
                     {flash.lines.map((line) => (
@@ -203,21 +203,21 @@ export const App = () => {
             </div>
 
             <div className="controls">
-                <div className="switch" role="group" aria-label="비교 대상">
+                <div className="switch" role="group" aria-label={t.compare}>
                     {(['before', 'after'] as const).map((s) => (
                         <button key={s} type="button" aria-pressed={side === s} onClick={() => selectSide(s)}>
-                            {SIDE_LABEL[s]}
+                            {t.side[s]}
                         </button>
                     ))}
                 </div>
                 <button type="button" className="primary" onClick={send} disabled={scenario.running}>
-                    메시지 보내기
+                    {t.send}
                 </button>
                 <button type="button" onClick={watchAuto} disabled={scenario.running}>
-                    자동으로 보기
+                    {t.watchAuto}
                 </button>
                 <button type="button" onClick={restart}>
-                    처음부터
+                    {t.restart}
                 </button>
             </div>
 

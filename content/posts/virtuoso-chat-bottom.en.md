@@ -14,6 +14,8 @@ And the real problem was auto-scroll kept breaking. Out of desperation I started
 
 But then a new problem showed up. A new message would come in, and instead of sticking to the bottom, the scroll would stop a few dozen pixels short. And even while sitting still at the bottom, the scroll would jitter up and down every time a message arrived.
 
+{{< demo name="virtuoso-chat" height="auto" >}}
+
 ## Symptom A: The Scroll Doesn't Keep Up With New Messages
 
 When you use `followOutput`, which follows new messages while at the bottom, or `scrollToIndex({ index: 'LAST', align: 'end' })`, which jumps to the last message, virtuoso roughly computes the scroll target like this.

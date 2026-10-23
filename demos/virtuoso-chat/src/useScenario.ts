@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import type { MessageKind } from './messages';
 import type { MetricsSnapshot } from './metrics';
+import { t } from './text';
 
 export type ScenarioActions = {
     restart: () => void;
@@ -46,7 +47,7 @@ export const useScenario = () => {
         const { signal } = controller;
 
         try {
-            setPhase('준비 중');
+            setPhase(t.phase.preparing);
             actions.restart();
             await sleep(2500, signal);
             actions.alignToBottom();
@@ -54,26 +55,26 @@ export const useScenario = () => {
             actions.resetMeasurements();
 
             for (const [i, kind] of LATE_MESSAGES.entries()) {
-                setPhase(`메시지 보내는 중 ${i + 1}/${LATE_MESSAGES.length}`);
+                setPhase(t.phase.sending(i + 1, LATE_MESSAGES.length));
                 actions.add(kind);
                 await sleep(1300, signal);
             }
-            setPhase('10개 한꺼번에');
+            setPhase(t.phase.burst);
             actions.burst();
             await sleep(3000, signal);
 
-            setPhase('위로 올렸다가');
+            setPhase(t.phase.scrollUp);
             for (let i = 0; i < 6; i += 1) {
                 actions.wheel(-250);
                 await sleep(120, signal);
             }
             await sleep(1200, signal);
-            setPhase('다시 내리는 중');
+            setPhase(t.phase.scrollDown);
             for (let i = 0; i < 12; i += 1) {
                 actions.wheel(250);
                 await sleep(120, signal);
             }
-            setPhase('지켜보는 중');
+            setPhase(t.phase.watching);
             await sleep(2500, signal);
 
             const snapshot = actions.read();

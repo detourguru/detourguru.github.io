@@ -1,6 +1,7 @@
 import { useEffect, type Dispatch } from 'react';
 
 import type { MetricsEvent, MetricsSnapshot } from './metrics';
+import { t } from './text';
 
 export type Side = 'before' | 'after';
 
@@ -55,34 +56,31 @@ export type Guide = { counter: string | null; text: string; tone: 'normal' | 'go
 export const guideFor = (state: TutorialState, side: Side): Guide => {
     switch (state.step) {
         case 1:
-            if (side === 'after') return { counter: '1/3', text: '고치기 전으로 바꿔서 해 보세요', tone: 'normal' };
+            if (side === 'after') return { counter: '1/3', text: t.guide.switchToBefore, tone: 'normal' };
             return {
                 counter: '1/3',
-                text: state.sends >= STEP1_HINT_SENDS ? '더 빠르게 눌러 보세요' : '메시지 보내기를 빠르게 여러 번 눌러 보세요',
+                text: state.sends >= STEP1_HINT_SENDS ? t.guide.pressFaster : t.guide.pressSend,
                 tone: 'normal',
             };
         case 2:
-            if (side === 'after') return { counter: '2/3', text: '고치기 전으로 바꿔서 해 보세요', tone: 'normal' };
+            if (side === 'after') return { counter: '2/3', text: t.guide.switchToBefore, tone: 'normal' };
             return {
                 counter: '2/3',
-                text:
-                    state.roundTrips >= STEP2_HINT_ROUND_TRIPS
-                        ? '조금 더 위로 올렸다가 내려와 보세요'
-                        : '바닥에 붙지 않았습니다. 다음: 위로 조금 올렸다가 다시 내려와 보세요',
+                text: state.roundTrips >= STEP2_HINT_ROUND_TRIPS ? t.guide.scrollMore : t.guide.missed,
                 tone: 'normal',
             };
         case 3:
-            if (side === 'before') return { counter: '3/3', text: '흔들렸습니다. 다음: 고친 뒤로 바꾸고 똑같이 해 보세요', tone: 'normal' };
-            return { counter: '3/3', text: '메시지 보내기를 여러 번 누르고, 위로 올렸다가 내려와 보세요', tone: 'normal' };
+            if (side === 'before') return { counter: '3/3', text: t.guide.shook, tone: 'normal' };
+            return { counter: '3/3', text: t.guide.tryAfter, tone: 'normal' };
         case 'done':
             return state.miss === 0 && state.shift === 0
                 ? {
                       counter: null,
-                      text: '고친 뒤에는 바닥 미달 0회, 흔들림 0px',
+                      text: t.guide.fixed,
                       tone: 'good',
-                      detail: '높이를 미리 확정하고, 바닥 근처는 다시 그리지 않고, 크기가 바뀌면 직접 바닥에 붙여서',
+                      detail: t.guide.fixedDetail,
                   }
-                : { counter: null, text: `고친 뒤에도 감지됐습니다. 바닥 미달 ${state.miss}회, 흔들림 ${state.shift}px`, tone: 'bad' };
+                : { counter: null, text: t.guide.stillDetected(state.miss, state.shift), tone: 'bad' };
     }
 };
 
