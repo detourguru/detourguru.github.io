@@ -13,5 +13,5 @@
     "noEmit": true,
     "types": ["vite/client"]
   },
-  "include": ["shared", "virtuoso-chat/src", "map-editor/src", "ai-qa-trust/src", "majority-vote/src", "vite.config.ts"]
+  "include": ["shared", "virtuoso-chat/src", "map-editor/src", "ai-qa-trust/src", "majority-vote/src", "editor-layout/src", "vite.config.ts"]
 }

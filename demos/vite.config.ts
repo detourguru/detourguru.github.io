@@ -15,6 +15,7 @@ export default defineConfig({
                 'map-editor': resolve(import.meta.dirname, 'map-editor/index.html'),
                 'ai-qa-trust': resolve(import.meta.dirname, 'ai-qa-trust/index.html'),
                 'majority-vote': resolve(import.meta.dirname, 'majority-vote/index.html'),
+                'editor-layout': resolve(import.meta.dirname, 'editor-layout/index.html'),
             },
         },
     },
